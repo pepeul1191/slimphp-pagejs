@@ -1,18 +1,12 @@
 <?php
 
-class LoginController
+class LoginController extends Controller
 {
-  protected $container;
-
-  public function __construct(\Slim\Container $container) {
-    $this->container = $container;
-  }
-
   public function view($request, $response, $args) {
     $rpta = '';
     $status = 200;
     $locals = [
-      'constants' => $this->container->constants,
+      'constants' => $this->constants,
       'title' => 'Login',
     ];
     $view = $this->container->view;
