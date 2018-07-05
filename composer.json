@@ -24,8 +24,8 @@
     },
     "autoload": {
       "psr-4": {
-          "Classes\\Weather\\": "Classes/CronJobs/Weather",
-      },
+          "Classes\\Weather\\": "Classes/CronJobs/Weather"
+      }
     },
     "config": {
         "process-timeout" : 0

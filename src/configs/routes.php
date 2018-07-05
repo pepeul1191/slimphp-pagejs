@@ -13,4 +13,5 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
   return $this->renderer->render($response, 'index.phtml', $args);
 });
 $app->get('/', \HomeController::class . ':home');
+$app->get('/departamento', \DepartamentoController::class . ':view');
 $app->get('/departamento/listar', \DepartamentoController::class . ':listar');

@@ -4,6 +4,20 @@ require_once 'src/models/departamento.php';
 
 class DepartamentoController
 {
+  protected $view;
+
+  public function __construct(\Slim\Container $container) {
+    $this->container = $container;
+  }
+
+  public function view($request, $response, $args) {
+    $rpta = '';
+    $status = 200;
+    return $this->container->renderer->render($response, 'ubicaciones/index.phtml', [
+        'name' => $args['name']
+    ]);
+  }
+
   public function listar($request, $response, $args) {
     $rpta = '';
     $status = 200;

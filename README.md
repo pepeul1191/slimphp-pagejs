@@ -29,5 +29,6 @@ That's it! Now go build something cool.
 ---
 
 + https://www.slimframework.com/docs/v3/tutorial/first-app.html
++ https://stackoverflow.com/questions/34807616/slim-3-render-method-not-valid
 
 composer dump-autoload -o
