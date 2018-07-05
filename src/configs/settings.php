@@ -17,6 +17,8 @@ return [
       'base_url' => 'http://localhost:8080/',
       'static_url' => 'http://localhost:8080/public/',
       'ambiente_static' => 'desarrollo',
+      'ambiente_csrf' => 'activo',
+      'ambiente_session' => 'activo',
       'login' => [
         'usuario' => 'admin',
         'contrasenia' => 'sistema123'

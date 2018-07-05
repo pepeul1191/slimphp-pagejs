@@ -37,8 +37,10 @@ class LoginController extends Controller
       }
     }
     if($continuar == true){
-      //TODO habilitar session
-      return $response->withRedirect($this->constants['base_url'], 301);
+      $_SESSION['usuario'] = $usuario;
+      $_SESSION['estado'] = 'activo';
+      $_SESSION['tiempo'] = date('Y-m-d H:i:s');
+      return $response->withRedirect($this->constants['base_url'], 200);
     }else{
       $status = 500;
       $this->load_helper('login');
@@ -52,5 +54,26 @@ class LoginController extends Controller
       $view = $this->container->view;
       return $view($response, 'blank', 'login/index.phtml', $locals);
     }
+  }
+
+  public function ver($request, $response, $args){
+    $rpta = '';
+    $status = 200;
+    if (array_key_exists('estado', $_SESSION)) {
+      if($_SESSION['estado'] != 'activo'){
+        $rpta = '<h1>El usuario no se encuentra logueado</h1>';
+      }else{
+        $rpta = '<h1>Usuario Logeado</h1><ul><li>' . $_SESSION['usuario'] . '</li><li>' .  $_SESSION['tiempo'] . '</li><li>' . $_SESSION['estado'] . '</li></ul>';
+      }
+    }else{
+      $rpta ='<h2>El usuario no se encuentra logueado</h2>';
+      $status = 500;
+    }
+    return $response->withStatus($status)->write($rpta);
+  }
+
+  public function cerrar($request, $response, $args){
+    session_destroy();
+    return $response->withRedirect($this->constants['base_url'] . 'login', 200);
   }
 }

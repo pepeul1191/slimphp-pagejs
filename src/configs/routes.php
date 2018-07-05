@@ -14,8 +14,13 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
   // Render index view
   return $this->renderer->render($response, 'index.phtml', $args);
 });
-$app->get('/', \HomeController::class . ':view');
+//login
 $app->get('/login', \LoginController::class . ':view');
 $app->post('/login/acceder', \LoginController::class . ':acceder');
+$app->get('/login/ver', \LoginController::class . ':ver');
+$app->get('/login/cerrar', \LoginController::class . ':cerrar');
+//home
+$app->get('/', \HomeController::class . ':view');
+//servicios REST
 $app->get('/departamento/listar', \DepartamentoController::class . ':listar');
 $app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar');
