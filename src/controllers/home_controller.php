@@ -11,15 +11,8 @@ class HomeController
   public function view($request, $response, $args) {
     $rpta = '';
     $status = 200;
-    var_dump($this->container->constants);
-    $this->container->renderer->render($response, 'partials/blank_header.phtml', [
-        'title' => 'Ubicaciones'
-    ]);
-    $this->container->renderer->render($response, 'home/index.phtml', [
-        'title' => 'Ubicaciones'
-    ]);
-    $this->container->renderer->render($response, 'partials/blank_footer.phtml', [
-        'title' => 'Ubicaciones'
-    ]);
+    $constants = $this->container->constants;
+    $view = $this->container->view;
+    return $view($response, 'blank', 'home/index.phtml', $constants);
   }
 }

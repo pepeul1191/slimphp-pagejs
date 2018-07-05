@@ -19,8 +19,17 @@ $container['constants'] = function ($c) {
   return $c->get('settings')['constants'];
 };
 
-$container['render_view'] = function ($c) {
-  return function($partial, $view, $locals) {
-    //my code here
-  }
+$container['view'] = function ($c) {
+  return function($response, $partial, $template, $locals) {
+    $view = new Slim\Views\PhpRenderer(__DIR__ . '/../templates/');
+    $view->render($response, 'partials/' . $partial . '_header.phtml', [
+      'title' => 'Ubicaciones'
+    ]);
+    $view->render($response, $template, [
+      'title' => 'Ubicaciones'
+    ]);
+    $view->render($response, 'partials/' . $partial . '_footer.phtml', [
+      'title' => 'Ubicaciones'
+    ]);
+  };
 };
