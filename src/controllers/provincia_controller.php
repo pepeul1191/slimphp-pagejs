@@ -1,8 +1,8 @@
 <?php
 
-require_once 'src/models/departamento.php';
+require_once 'src/models/provincia.php';
 
-class DepartamentoController
+class ProvinciaController
 {
   protected $container;
 
@@ -13,10 +13,12 @@ class DepartamentoController
   public function listar($request, $response, $args) {
     $rpta = '';
     $status = 200;
+    $departamento_id = $args['departamento_id'];
     try {
-      $rs = Model::factory('Departamentos', 'ubicaciones')
+      $rs = Model::factory('Provincia', 'ubicaciones')
       	->select('id')
       	->select('nombre')
+      	->where('departamento_id', $departamento_id)
       	->find_array();
       $rpta = json_encode($rs);
     }catch (Exception $e) {
@@ -25,7 +27,7 @@ class DepartamentoController
         [
           'tipo_mensaje' => 'error',
           'mensaje' => [
-  					'No se ha podido listar los departamentos',
+  					'No se ha podido listar los provincias del departamento',
   					$e->getMessage()
   				]
         ]

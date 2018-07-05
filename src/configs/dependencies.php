@@ -14,3 +14,7 @@ $container['logger'] = function ($c) {
   $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
   return $logger;
 };
+
+$container['view'] = function ($c) {
+  return 'hola';
+};
