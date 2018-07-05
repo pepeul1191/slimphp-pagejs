@@ -25,13 +25,7 @@
     "autoload": {
       "psr-4": {
           "Classes\\Weather\\": "Classes/CronJobs/Weather",
-          "Configs\\": "src/configs",
-          "Models\\": "src/models"
       },
-      "files": [
-         "vendor/j4mie/idiorm/idiorm.php",
-         "vendor/j4mie/paris/paris.php"
-       ]
     },
     "config": {
         "process-timeout" : 0

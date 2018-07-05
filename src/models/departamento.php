@@ -1,6 +1,5 @@
 <?php
-require_once 'src/configs/Database.php';
-//use Configs\Database;
+require_once 'src/configs/database.php';
 
 class Departamento extends Model
 {

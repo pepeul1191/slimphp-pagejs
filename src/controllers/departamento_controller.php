@@ -1,7 +1,6 @@
 <?php
 
-require_once 'src/models/Departamento.php';
-//use Models\Departmaneto;
+require_once 'src/models/departamento.php';
 
 class DepartamentoController
 {
@@ -15,6 +14,7 @@ class DepartamentoController
       	->find_array();
       $rpta = json_encode($rs);
     }catch (Exception $e) {
+      $status = 500;
       $rpta = json_encode(
         [
           'tipo_mensaje' => 'error',
@@ -25,7 +25,6 @@ class DepartamentoController
         ]
       );
     }
-    //$response->setStatus(400);
-    return $response->getBody()->write($rpta);
+    return $response->withStatus($status)->write($rpta);
   }
 }
