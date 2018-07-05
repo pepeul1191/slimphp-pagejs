@@ -6,7 +6,7 @@ $mw_ambiente_csrf = function ($request, $response, $next) {
   $settings = require 'settings.php';
   $continuar = true;
   if($settings['settings']['constants']['ambiente_csrf'] == 'activo'){
-    if($request->getHeader($settings['settings']['constants']['csrf']['key']) != $settings['settings']['constants']['csrf']['secret']){
+    if($request->getHeader($settings['settings']['constants']['csrf']['key'])[0] != $settings['settings']['constants']['csrf']['secret']){
       $continuar = false;
     }
   }
