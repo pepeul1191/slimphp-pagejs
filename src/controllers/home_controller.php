@@ -11,8 +11,11 @@ class HomeController
   public function view($request, $response, $args) {
     $rpta = '';
     $status = 200;
-    $constants = $this->container->constants;
+    $locals = [
+      'constants' => $this->container->constants,
+      'title' => 'Ubicaciones???',
+    ];
     $view = $this->container->view;
-    return $view($response, 'blank', 'home/index.phtml', $constants);
+    return $view($response, 'blank', 'home/index.phtml', $locals);
   }
 }

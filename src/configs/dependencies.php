@@ -22,14 +22,8 @@ $container['constants'] = function ($c) {
 $container['view'] = function ($c) {
   return function($response, $partial, $template, $locals) {
     $view = new Slim\Views\PhpRenderer(__DIR__ . '/../templates/');
-    $view->render($response, 'partials/' . $partial . '_header.phtml', [
-      'title' => 'Ubicaciones'
-    ]);
-    $view->render($response, $template, [
-      'title' => 'Ubicaciones'
-    ]);
-    $view->render($response, 'partials/' . $partial . '_footer.phtml', [
-      'title' => 'Ubicaciones'
-    ]);
+    $view->render($response, 'partials/' . $partial . '_header.phtml', $locals);
+    $view->render($response, $template, $locals);
+    $view->render($response, 'partials/' . $partial . '_footer.phtml', $locals);
   };
 };
