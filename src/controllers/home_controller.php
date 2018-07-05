@@ -1,18 +1,12 @@
 <?php
 
-class HomeController
+class HomeController extends Controller
 {
-  protected $container;
-
-  public function __construct(\Slim\Container $container) {
-    $this->container = $container;
-  }
-
   public function view($request, $response, $args) {
     $rpta = '';
     $status = 200;
     $locals = [
-      'constants' => $this->container->constants,
+      'constants' => $this->constants,
       'title' => 'Ubicaciones???',
     ];
     $view = $this->container->view;

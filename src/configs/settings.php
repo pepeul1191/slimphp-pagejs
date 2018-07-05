@@ -16,6 +16,11 @@ return [
     'constants' => [
       'base_url' => 'http://localhost:8080/',
       'static_url' => 'http://localhost:8080/public/',
+      'ambiente_static' => 'desarrollo',
+      'login' => [
+        'usuario' => 'admin',
+        'contrasenia' => 'sistema123'
+      ]
     ],
   ],
 ];

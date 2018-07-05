@@ -2,14 +2,8 @@
 
 require_once 'src/models/provincia.php';
 
-class ProvinciaController
+class ProvinciaController extends Controller
 {
-  protected $container;
-
-  public function __construct(\Slim\Container $container) {
-    $this->container = $container;
-  }
-
   public function listar($request, $response, $args) {
     $rpta = '';
     $status = 200;
