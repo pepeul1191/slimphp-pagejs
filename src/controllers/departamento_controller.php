@@ -13,8 +13,15 @@ class DepartamentoController
   public function view($request, $response, $args) {
     $rpta = '';
     $status = 200;
-    return $this->container->renderer->render($response, 'ubicaciones/index.phtml', [
-        'name' => $args['name']
+    var_dump($settings['template_path']);
+    $this->container->renderer->render($response, 'partials/blank_header.phtml', [
+        'title' => 'Ubicaciones'
+    ]);
+    $this->container->renderer->render($response, 'ubicaciones/index.phtml', [
+        'title' => 'Ubicaciones'
+    ]);
+    $this->container->renderer->render($response, 'partials/blank_footer.phtml', [
+        'title' => 'Ubicaciones'
     ]);
   }
 
