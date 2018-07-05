@@ -2,3 +2,9 @@
 /logs/*
 !/logs/README.md
 composer.lock
+node_modules
+package-lock.json
+public/bower_components
+public/dist
+.DS_Store
+*.ods#
