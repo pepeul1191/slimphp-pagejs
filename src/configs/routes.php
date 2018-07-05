@@ -22,5 +22,5 @@ $app->get('/login/cerrar', \LoginController::class . ':cerrar');
 //home
 $app->get('/', \HomeController::class . ':view');
 //servicios REST
-$app->get('/departamento/listar', \DepartamentoController::class . ':listar');
-$app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar');
+$app->get('/departamento/listar', \DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
+$app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar')->add($mw_ambiente_csrf);

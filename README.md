@@ -32,5 +32,6 @@ That's it! Now go build something cool.
 + https://stackoverflow.com/questions/34807616/slim-3-render-method-not-valid
 + https://stackoverflow.com/questions/36993560/pass-arguments-in-slim-di-service
 + https://gist.github.com/akrabat/636a8833695f1e107701
++ https://www.slimframework.com/docs/v3/concepts/middleware.html
 
 composer dump-autoload -o
