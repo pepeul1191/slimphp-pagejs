@@ -15,6 +15,12 @@ $container['logger'] = function ($c) {
   return $logger;
 };
 
-$container['view'] = function ($c) {
-  return 'hola';
+$container['constants'] = function ($c) {
+  return $c->get('settings')['constants'];
+};
+
+$container['render_view'] = function ($c) {
+  return function($partial, $view, $locals) {
+    //my code here
+  }
 };

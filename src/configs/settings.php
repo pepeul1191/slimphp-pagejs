@@ -13,5 +13,9 @@ return [
       'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../../logs/app.log',
       'level' => \Monolog\Logger::DEBUG,
     ],
+    'constants' => [
+      'base_url' => 'http://localhost:8080/',
+      'static_url' => 'http://localhost:8080/public/',
+    ],
   ],
 ];
