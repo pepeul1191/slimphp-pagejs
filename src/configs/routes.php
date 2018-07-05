@@ -16,5 +16,6 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
 });
 $app->get('/', \HomeController::class . ':view');
 $app->get('/login', \LoginController::class . ':view');
+$app->post('/login/acceder', \LoginController::class . ':acceder');
 $app->get('/departamento/listar', \DepartamentoController::class . ':listar');
 $app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar');
