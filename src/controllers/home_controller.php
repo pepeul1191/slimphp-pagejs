@@ -7,9 +7,9 @@ class HomeController extends Controller
     $status = 200;
     $locals = [
       'constants' => $this->constants,
-      'title' => 'Ubicaciones???',
+      'title' => 'Ubicaciones',
     ];
     $view = $this->container->view;
-    return $view($response, 'blank', 'home/index.phtml', $locals);
+    return $view($response, 'app', 'home/index.phtml', $locals);
   }
 }
