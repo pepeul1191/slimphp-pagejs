@@ -10,6 +10,10 @@ Refrescar composer:
 
 Basado en Slim Framework 3 Skeleton Application
 
+## Correr test de carga
+
+Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambiente_session' a 'inactivo' .
+
 ---
 
 Fuentes:
