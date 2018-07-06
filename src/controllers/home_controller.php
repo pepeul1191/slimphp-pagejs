@@ -12,12 +12,12 @@ class HomeController extends Controller
       'csss' => $this->load_css(index_css($this->constants)),
       'jss'=> $this->load_js(index_js($this->constants)),
       'mensaje' => '',
-      'menu' => '[{"url" : "accesos", "nombre" : "Accesos"},{"url" : "libros", "nombre" : "Libros"}]',
-      'items' => '[{"subtitulo":"","items":[{"item":"Gestión de Sistemas","url":"accesos/#/sistema"},{"item":"Gestión de Usuarios","url":"accesos/#/usuario"}]}]',
+      'menu' => '[{"url" : "", "nombre" : "Ubicaciones"}]',
+      'items' => '[{"subtitulo":"","items":[{"item":"Ubicaciones del Perú","url":"#/ubicacion"}]}]',
       'data' => json_encode(array(
         'mensaje' => false,
-        'titulo_pagina' => 'Gestión de Accesos',
-        'modulo' => 'Accesos'
+        'titulo_pagina' => 'Gestión de Ubicaciones',
+        'modulo' => 'Ubicaciones'
       )),
     ];
     $view = $this->container->view;

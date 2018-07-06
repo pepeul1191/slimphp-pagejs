@@ -12,12 +12,12 @@
         var MODULOS_JSON = JSON.parse('<?php echo $menu; ?>');
         var ITEMS_JSON = JSON.parse('<?php echo $items; ?>');
         var DATA = JSON.parse('<?php echo $data; ?>');
-        var CSRF = '<?php echo $constants['csrf']['sercret'];?>';
+        var CSRF = "<?php echo $constants['csrf']['secret']; ?>";
+        var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
     </script>
 </head>
 <body>
     <label id="defaultTargetMensajes"></label>
-    <input type="hidden" name="ci_csrf_token" value="\\" onmouseover=prompt(965267) bad=\"" />
     <!-- Inicio modal -->
     <button type="button" class="btn btn-primary btn-lg oculto" data-toggle="modal" data-target="#modal-container" id="btnModal">Launch demo modal</button>
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,7 +60,7 @@
     </script>
     <script id="breadcrumb-template" type="text/x-handlebars-template">
       <nav>
-        <h1><i class="fa fa-umbrella h1" aria-hidden="true"></i>Gestor de Conentidos - COA</h1>
+        <h1><i class="fa fa-map-marker h1" aria-hidden="true"></i>Gestor de Ubicaciones</h1>
         {{{menuModulos}}}
       </nav>
     </script>

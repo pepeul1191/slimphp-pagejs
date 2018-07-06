@@ -30,6 +30,7 @@ $container['view'] = function ($c) {
 
 $container['notFoundHandler'] = function ($c) {
   return function ($request, $response) use ($c) {
+    /*
     $method = $request->getMethod();
     if($method == 'GET'){
       return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
@@ -49,6 +50,7 @@ $container['notFoundHandler'] = function ($c) {
         ->withHeader('Content-type', 'text/html')
         ->write($rpta);
     }
+    */
   };
 };
 
