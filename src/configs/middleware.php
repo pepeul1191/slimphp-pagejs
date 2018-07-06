@@ -45,7 +45,7 @@ $mw_session_true = function ($request, $response, $next) {
     return $response;
   }else{
     $status = 500;
-    $response = $response->withRedirect($this->constants['base_url'] . 'login');
+    $response = $response->withRedirect($this->constants['base_url'] . 'error/access/505');
     return $response;
   }
 };

@@ -4,6 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 require_once 'src/controllers/home_controller.php';
 require_once 'src/controllers/login_controller.php';
+require_once 'src/controllers/error_controller.php';
 require_once 'src/controllers/departamento_controller.php';
 require_once 'src/controllers/provincia_controller.php';
 require_once 'src/controllers/distrito_controller.php';
@@ -20,6 +21,8 @@ $app->get('/login', \LoginController::class . ':view')->add($mw_session_false);
 $app->post('/login/acceder', \LoginController::class . ':acceder');
 $app->get('/login/ver', \LoginController::class . ':ver');
 $app->get('/login/cerrar', \LoginController::class . ':cerrar');
+//error
+$app->get('/error/access/{numero}', \ErrorController::class . ':access');
 //home
 $app->get('/', \HomeController::class . ':view')->add($mw_session_true);
 //servicios REST

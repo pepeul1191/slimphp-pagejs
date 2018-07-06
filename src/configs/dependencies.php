@@ -27,3 +27,9 @@ $container['view'] = function ($c) {
     $view->render($response, 'partials/' . $partial . '_footer.phtml', $locals);
   };
 };
+
+$container['notFoundHandler'] = function ($c) {
+  return function ($request, $response) use ($c) {
+    return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
+  };
+};
