@@ -13,7 +13,7 @@ class HomeController extends Controller
       'jss'=> $this->load_js(index_js($this->constants)),
       'mensaje' => '',
       'menu' => '[{"url" : "", "nombre" : "Ubicaciones"}]',
-      'items' => '[{"subtitulo":"","items":[{"item":"Ubicaciones del Perú","url":"#/ubicacion"}]}]',
+      'items' => '[{"subtitulo":"","items":[{"item":"Ubicaciones del Perú","url":"#/ubicacion"},{"item":"Autocompletar","url":"#/autocompletar"}]}]',
       'data' => json_encode(array(
         'mensaje' => false,
         'titulo_pagina' => 'Gestión de Ubicaciones',

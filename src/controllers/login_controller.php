@@ -31,7 +31,7 @@ class LoginController extends Controller
     if($continuar == true){
       $usuario = $request->getParam('usuario');
       $contrasenia = $request->getParam('contrasenia');
-      if($usuario != $this->constants['login']['usuario'] && $contrasenia != $this->constants['login']['contrasenia']){
+      if($usuario != $this->constants['login']['usuario'] or $contrasenia != $this->constants['login']['contrasenia']){
         $continuar = false;
         $mensaje = 'Usuario y/o contraenia no coinciden';
       }
