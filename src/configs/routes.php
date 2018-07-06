@@ -16,12 +16,12 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
   return $this->renderer->render($response, 'index.phtml', $args);
 });
 //login
-$app->get('/login', \LoginController::class . ':view');
+$app->get('/login', \LoginController::class . ':view')->add($mw_session_false);
 $app->post('/login/acceder', \LoginController::class . ':acceder');
 $app->get('/login/ver', \LoginController::class . ':ver');
 $app->get('/login/cerrar', \LoginController::class . ':cerrar');
 //home
-$app->get('/', \HomeController::class . ':view');
+$app->get('/', \HomeController::class . ':view')->add($mw_session_true);
 //servicios REST
 $app->get('/departamento/listar', \DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
 $app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar')->add($mw_ambiente_csrf);
