@@ -63,7 +63,7 @@ class DepartamentoController extends Controller
       }
       $rpta['tipo_mensaje'] = 'success';
       $rpta['mensaje'] = [
-        'Se ha registrado los cambios en los especialidades',
+        'Se ha registrado los cambios en los departamentos',
         $array_nuevos
       ];
       ORM::get_db('ubicaciones')->commit();
