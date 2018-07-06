@@ -78,7 +78,6 @@ class LoginController extends Controller
 
   public function cerrar($request, $response, $args){
     session_destroy();
-    $response = $response->withRedirect($this->constants['base_url'] . 'login', 200);
-    return $response;
+    return $response->withRedirect($this->constants['base_url'] . 'login');
   }
 }
