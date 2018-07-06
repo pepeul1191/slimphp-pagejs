@@ -30,7 +30,25 @@ $container['view'] = function ($c) {
 
 $container['notFoundHandler'] = function ($c) {
   return function ($request, $response) use ($c) {
-    return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
+    $method = $request->getMethod();
+    if($method == 'GET'){
+      return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
+    }else{
+      $rpta = json_encode(
+        [
+          'tipo_mensaje' => 'error',
+          'mensaje' => [
+            'Recurso no disponible',
+            'Error 404'
+          ]
+        ]
+      );
+      return $c['response']
+        ->withStatus(404)
+        ->withHeader('Allow', implode(', ', $methods))
+        ->withHeader('Content-type', 'text/html')
+        ->write($rpta);
+    }
   };
 };
 
