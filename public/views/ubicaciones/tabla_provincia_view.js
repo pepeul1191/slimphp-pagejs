@@ -16,6 +16,6 @@ var TablaProvinciaView = TableView.extend({
     tablaDistrito.limpiarBody();
     tablaDistrito.listar();
     tablaDistrito.extraData = {provincia_id: provinciaId};
-    document.getElementById(tablaDistrito.el).classList.remove("oculto");
+    document.getElementById("formTableDistrito").classList.remove("oculto");
   },
 });
