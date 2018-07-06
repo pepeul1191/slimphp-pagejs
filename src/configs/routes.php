@@ -27,6 +27,7 @@ $app->get('/error/access/{numero}', \ErrorController::class . ':access');
 $app->get('/', \HomeController::class . ':view')->add($mw_session_true);
 //servicios REST
 $app->get('/departamento/listar', \DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
+$app->post('/departamento/guardar', \DepartamentoController::class . ':guardar')->add($mw_ambiente_csrf);
 $app->get('/provincia/listar/{departamento_id}', \ProvinciaController::class . ':listar')->add($mw_ambiente_csrf);
 $app->get('/distrito/listar/{provincia_id}', \DistritoController::class . ':listar')->add($mw_ambiente_csrf);
 $app->get('/distrito/buscar', \DistritoController::class . ':buscar')->add($mw_ambiente_csrf);

@@ -8,6 +8,8 @@ Refrescar composer:
 
     $ composer dump-autoload -o
 
+Basado en Slim Framework 3 Skeleton Application
+
 ---
 
 Fuentes:
@@ -18,3 +20,4 @@ Fuentes:
 + https://gist.github.com/akrabat/636a8833695f1e107701
 + https://www.slimframework.com/docs/v3/concepts/middleware.html
 + https://stackoverflow.com/questions/36521233/slim-3-middleware-redirect
++ https://github.com/slimphp/Slim-Skeleton
