@@ -31,6 +31,59 @@ class DistritoController extends Controller
     return $response->withStatus($status)->write($rpta);
   }
 
+  public function guardar($request, $response, $args) {
+    $data = json_decode($request->getParam('data'));
+    $nuevos = $data->{'nuevos'};
+    $editados = $data->{'editados'};
+    $eliminados = $data->{'eliminados'};
+    $provincia_id = $data->{'extra'}->{'provincia_id'};
+    $rpta = []; $array_nuevos = [];
+    $status = 200;
+    ORM::get_db('ubicaciones')->beginTransaction();
+    try {
+      if(count($nuevos) > 0){
+        foreach ($nuevos as &$nuevo) {
+          $distrito = Model::factory('Distrito', 'ubicaciones')->create();
+          $distrito->nombre = $nuevo->{'nombre'};
+          $distrito->provincia_id = $provincia_id;
+          $distrito->save();
+          $temp = [];
+          $temp['temporal'] = $nuevo->{'id'};
+          $temp['nuevo_id'] = $distrito->id;
+          array_push( $array_nuevos, $temp );
+        }
+      }
+      if(count($editados) > 0){
+        foreach ($editados as &$editado) {
+          $distrito = Model::factory('Distrito', 'ubicaciones')->find_one($editado->{'id'});
+          $distrito->nombre = $editado->{'nombre'};
+          $distrito->save();
+        }
+      }
+      if(count($eliminados) > 0){
+        foreach ($eliminados as &$eliminado) {
+          $distrito = Model::factory('Distrito', 'ubicaciones')->find_one($eliminado);
+          $distrito->delete();
+        }
+      }
+      $rpta['tipo_mensaje'] = 'success';
+      $rpta['mensaje'] = [
+        'Se ha registrado los cambios en los distritos',
+        $array_nuevos
+      ];
+      ORM::get_db('ubicaciones')->commit();
+    }catch (Exception $e) {
+      $status = 500;
+      $rpta['tipo_mensaje'] = 'error';
+      $rpta['mensaje'] = [
+        'Se ha producido un error en guardar la tabla de distritos',
+        $e->getMessage()
+      ];
+      ORM::get_db('ubicaciones')->rollBack();
+    }
+    return $response->withStatus($status)->write(json_encode($rpta));
+  }
+
   public function buscar($request, $response, $args) {
     $rpta = '';
     $status = 200;
