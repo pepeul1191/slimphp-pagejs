@@ -33,3 +33,22 @@ $container['notFoundHandler'] = function ($c) {
     return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
   };
 };
+
+$container['notAllowedHandler'] = function ($c) {
+  return function ($request, $response, $methods) use ($c) {
+    $rpta = json_encode(
+      [
+        'tipo_mensaje' => 'error',
+        'mensaje' => [
+          'Error,no se puede acceder al recurso',
+          'Operación HTTP no es la adecuada'
+        ]
+      ]
+    );
+    return $c['response']
+      ->withStatus(405)
+      ->withHeader('Allow', implode(', ', $methods))
+      ->withHeader('Content-type', 'text/html')
+      ->write($rpta);
+  };
+};
