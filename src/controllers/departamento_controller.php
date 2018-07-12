@@ -9,7 +9,7 @@ class DepartamentoController extends \Configs\Controller
     $rpta = '';
     $status = 200;
     try {
-      $rs = Model::factory('Departamento', 'ubicaciones')
+      $rs = \Model::factory('Departamento', 'ubicaciones')
       	->select('id')
       	->select('nombre')
       	->find_array();
@@ -36,11 +36,11 @@ class DepartamentoController extends \Configs\Controller
     $eliminados = $data->{'eliminados'};
     $rpta = []; $array_nuevos = [];
     $status = 200;
-    ORM::get_db('ubicaciones')->beginTransaction();
+    \ORM::get_db('ubicaciones')->beginTransaction();
     try {
       if(count($nuevos) > 0){
         foreach ($nuevos as &$nuevo) {
-          $departamento = Model::factory('Departamento', 'ubicaciones')->create();
+          $departamento = \Model::factory('Departamento', 'ubicaciones')->create();
           $departamento->nombre = $nuevo->{'nombre'};
           $departamento->save();
           $temp = [];
@@ -51,14 +51,14 @@ class DepartamentoController extends \Configs\Controller
       }
       if(count($editados) > 0){
         foreach ($editados as &$editado) {
-          $departamento = Model::factory('Departamento', 'ubicaciones')->find_one($editado->{'id'});
+          $departamento = \Model::factory('Departamento', 'ubicaciones')->find_one($editado->{'id'});
           $departamento->nombre = $editado->{'nombre'};
           $departamento->save();
         }
       }
       if(count($eliminados) > 0){
         foreach ($eliminados as &$eliminado) {
-          $departamento = Model::factory('Departamento', 'ubicaciones')->find_one($eliminado);
+          $departamento = \Model::factory('Departamento', 'ubicaciones')->find_one($eliminado);
           $departamento->delete();
         }
       }
@@ -67,7 +67,7 @@ class DepartamentoController extends \Configs\Controller
         'Se ha registrado los cambios en los departamentos',
         $array_nuevos
       ];
-      ORM::get_db('ubicaciones')->commit();
+      \ORM::get_db('ubicaciones')->commit();
     }catch (Exception $e) {
       $status = 500;
       $rpta['tipo_mensaje'] = 'error';
@@ -75,7 +75,7 @@ class DepartamentoController extends \Configs\Controller
         'Se ha producido un error en guardar la tabla de departamentos',
         $e->getMessage()
       ];
-      ORM::get_db('ubicaciones')->rollBack();
+      \ORM::get_db('ubicaciones')->rollBack();
     }
     return $response->withStatus($status)->write(json_encode($rpta));
   }

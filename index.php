@@ -23,9 +23,6 @@ require __DIR__ . '/src/configs/dependencies.php';
 // Register middleware
 require __DIR__ . '/src/configs/middleware.php';
 
-//Load Controller
-require __DIR__ . '/src/configs/controller.php';
-
 // Register routes
 require __DIR__ . '/src/configs/routes.php';
 

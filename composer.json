@@ -27,6 +27,8 @@
           "Classes\\Weather\\": "Classes/CronJobs/Weather"
       },
       "classmap": [
+        "vendor/j4mie/idiorm/idiorm.php",
+        "vendor/j4mie/paris/paris.php",
         "src/configs/controller.php",
         "src/controllers"
       ]

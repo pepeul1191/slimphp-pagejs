@@ -4,14 +4,14 @@ namespace Controller;
 require_once 'src/models/distrito.php';
 require_once 'src/models/vw_distrito_provincia_departamento.php';
 
-class DistritoController extends Controller
+class DistritoController extends \Configs\Controller
 {
   public function listar($request, $response, $args) {
     $rpta = '';
     $status = 200;
     $provincia_id = $args['provincia_id'];
     try {
-      $rs = Model::factory('Distrito', 'ubicaciones')
+      $rs = \Model::factory('Distrito', 'ubicaciones')
       	->select('id')
       	->select('nombre')
       	->where('provincia_id', $provincia_id)
@@ -40,11 +40,11 @@ class DistritoController extends Controller
     $provincia_id = $data->{'extra'}->{'provincia_id'};
     $rpta = []; $array_nuevos = [];
     $status = 200;
-    ORM::get_db('ubicaciones')->beginTransaction();
+    \ORM::get_db('ubicaciones')->beginTransaction();
     try {
       if(count($nuevos) > 0){
         foreach ($nuevos as &$nuevo) {
-          $distrito = Model::factory('Distrito', 'ubicaciones')->create();
+          $distrito = \Model::factory('Distrito', 'ubicaciones')->create();
           $distrito->nombre = $nuevo->{'nombre'};
           $distrito->provincia_id = $provincia_id;
           $distrito->save();
@@ -56,14 +56,14 @@ class DistritoController extends Controller
       }
       if(count($editados) > 0){
         foreach ($editados as &$editado) {
-          $distrito = Model::factory('Distrito', 'ubicaciones')->find_one($editado->{'id'});
+          $distrito = \Model::factory('Distrito', 'ubicaciones')->find_one($editado->{'id'});
           $distrito->nombre = $editado->{'nombre'};
           $distrito->save();
         }
       }
       if(count($eliminados) > 0){
         foreach ($eliminados as &$eliminado) {
-          $distrito = Model::factory('Distrito', 'ubicaciones')->find_one($eliminado);
+          $distrito = \Model::factory('Distrito', 'ubicaciones')->find_one($eliminado);
           $distrito->delete();
         }
       }
@@ -72,7 +72,7 @@ class DistritoController extends Controller
         'Se ha registrado los cambios en los distritos',
         $array_nuevos
       ];
-      ORM::get_db('ubicaciones')->commit();
+      \ORM::get_db('ubicaciones')->commit();
     }catch (Exception $e) {
       $status = 500;
       $rpta['tipo_mensaje'] = 'error';
@@ -80,7 +80,7 @@ class DistritoController extends Controller
         'Se ha producido un error en guardar la tabla de distritos',
         $e->getMessage()
       ];
-      ORM::get_db('ubicaciones')->rollBack();
+      \ORM::get_db('ubicaciones')->rollBack();
     }
     return $response->withStatus($status)->write(json_encode($rpta));
   }
@@ -90,7 +90,7 @@ class DistritoController extends Controller
     $status = 200;
     $nombre = $request->getQueryParam('nombre');
     try {
-      $rs = Model::factory('VWDistritoProvinciaDepartamento', 'ubicaciones')
+      $rs = \Model::factory('VWDistritoProvinciaDepartamento', 'ubicaciones')
     		->select('id')
     		->select('nombre')
     		->where_like('nombre', $nombre . '%')
@@ -117,7 +117,7 @@ class DistritoController extends Controller
     $status = 200;
     $distrito_id = $args['distrito_id'];
     try {
-      $rs = Model::factory('VWDistritoProvinciaDepartamento', 'ubicaciones')
+      $rs = \Model::factory('VWDistritoProvinciaDepartamento', 'ubicaciones')
   			->select('nombre')
   			->where('id', $distrito_id)
   			->find_one()
