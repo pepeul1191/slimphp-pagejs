@@ -1,5 +1,6 @@
 <?php
 
+namespace Configs;
 require_once 'src/models/departamento.php';
 
 class Controller

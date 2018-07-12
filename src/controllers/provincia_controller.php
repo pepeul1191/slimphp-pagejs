@@ -1,8 +1,9 @@
 <?php
 
+namespace Controller;
 require_once 'src/models/provincia.php';
 
-class ProvinciaController extends Controller
+class ProvinciaController extends \Configs\Controller
 {
   public function listar($request, $response, $args) {
     $rpta = '';

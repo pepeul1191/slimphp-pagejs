@@ -1,6 +1,8 @@
 <?php
 
-class ErrorController extends Controller
+namespace Controller;
+
+class ErrorController extends \Configs\Controller
 {
   public function access($request, $response, $args) {
     $this->load_helper('error');

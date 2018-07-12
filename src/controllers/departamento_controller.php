@@ -1,8 +1,9 @@
 <?php
 
+namespace Controller;
 require_once 'src/models/departamento.php';
 
-class DepartamentoController extends Controller
+class DepartamentoController extends \Configs\Controller
 {
   public function listar($request, $response, $args) {
     $rpta = '';

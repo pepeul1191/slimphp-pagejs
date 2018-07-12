@@ -1,6 +1,8 @@
 <?php
 
-class HomeController extends Controller
+namespace Controller;
+
+class HomeController extends \Configs\Controller
 {
   public function view($request, $response, $args) {
     $this->load_helper('home');

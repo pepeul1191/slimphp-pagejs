@@ -1,5 +1,6 @@
 <?php
 
+namespace Controller;
 require_once 'src/models/distrito.php';
 require_once 'src/models/vw_distrito_provincia_departamento.php';
 

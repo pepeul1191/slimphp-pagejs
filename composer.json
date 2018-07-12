@@ -25,7 +25,11 @@
     "autoload": {
       "psr-4": {
           "Classes\\Weather\\": "Classes/CronJobs/Weather"
-      }
+      },
+      "classmap": [
+        "src/configs/controller.php",
+        "src/controllers"
+      ]
     },
     "config": {
         "process-timeout" : 0

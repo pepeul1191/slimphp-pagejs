@@ -1,6 +1,8 @@
 <?php
 
-class LoginController extends Controller
+namespace Controller;
+
+class LoginController extends \Configs\Controller
 {
   public function view($request, $response, $args) {
     $this->load_helper('login');
