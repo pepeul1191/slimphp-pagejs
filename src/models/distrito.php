@@ -1,8 +1,8 @@
 <?php
 
-require_once 'src/configs/database.php';
+namespace Models;
 
-class Distrito extends Model
+class Distrito extends \Model
 {
 	public static $_table = 'distritos';
 	public static $_connection_name = 'ubicaciones';

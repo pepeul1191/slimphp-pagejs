@@ -1,9 +1,10 @@
 <?php
 
-require_once 'src/configs/database.php';
+namespace Models;
 
-class Departamento extends Model
+class Departamento extends \Model
 {
+
 	public static $_table = 'departamentos';
 	public static $_connection_name = 'ubicaciones';
 }

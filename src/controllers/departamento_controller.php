@@ -1,7 +1,6 @@
 <?php
 
 namespace Controller;
-require_once 'src/models/departamento.php';
 
 class DepartamentoController extends \Configs\Controller
 {
@@ -9,7 +8,7 @@ class DepartamentoController extends \Configs\Controller
     $rpta = '';
     $status = 200;
     try {
-      $rs = \Model::factory('Departamento', 'ubicaciones')
+      $rs = \Model::factory('\Models\Departamento', 'ubicaciones')
       	->select('id')
       	->select('nombre')
       	->find_array();
@@ -40,7 +39,7 @@ class DepartamentoController extends \Configs\Controller
     try {
       if(count($nuevos) > 0){
         foreach ($nuevos as &$nuevo) {
-          $departamento = \Model::factory('Departamento', 'ubicaciones')->create();
+          $departamento = \Model::factory('\Models\Departamento', 'ubicaciones')->create();
           $departamento->nombre = $nuevo->{'nombre'};
           $departamento->save();
           $temp = [];
@@ -51,14 +50,14 @@ class DepartamentoController extends \Configs\Controller
       }
       if(count($editados) > 0){
         foreach ($editados as &$editado) {
-          $departamento = \Model::factory('Departamento', 'ubicaciones')->find_one($editado->{'id'});
+          $departamento = \Model::factory('\Models\Departamento', 'ubicaciones')->find_one($editado->{'id'});
           $departamento->nombre = $editado->{'nombre'};
           $departamento->save();
         }
       }
       if(count($eliminados) > 0){
         foreach ($eliminados as &$eliminado) {
-          $departamento = \Model::factory('Departamento', 'ubicaciones')->find_one($eliminado);
+          $departamento = \Model::factory('\Models\Departamento', 'ubicaciones')->find_one($eliminado);
           $departamento->delete();
         }
       }

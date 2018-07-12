@@ -11,7 +11,7 @@ class DistritoController extends \Configs\Controller
     $status = 200;
     $provincia_id = $args['provincia_id'];
     try {
-      $rs = \Model::factory('Distrito', 'ubicaciones')
+      $rs = \Model::factory('\Models\Distrito', 'ubicaciones')
       	->select('id')
       	->select('nombre')
       	->where('provincia_id', $provincia_id)
@@ -44,7 +44,7 @@ class DistritoController extends \Configs\Controller
     try {
       if(count($nuevos) > 0){
         foreach ($nuevos as &$nuevo) {
-          $distrito = \Model::factory('Distrito', 'ubicaciones')->create();
+          $distrito = \Model::factory('\Models\Distrito', 'ubicaciones')->create();
           $distrito->nombre = $nuevo->{'nombre'};
           $distrito->provincia_id = $provincia_id;
           $distrito->save();
@@ -56,14 +56,14 @@ class DistritoController extends \Configs\Controller
       }
       if(count($editados) > 0){
         foreach ($editados as &$editado) {
-          $distrito = \Model::factory('Distrito', 'ubicaciones')->find_one($editado->{'id'});
+          $distrito = \Model::factory('\Models\Distrito', 'ubicaciones')->find_one($editado->{'id'});
           $distrito->nombre = $editado->{'nombre'};
           $distrito->save();
         }
       }
       if(count($eliminados) > 0){
         foreach ($eliminados as &$eliminado) {
-          $distrito = \Model::factory('Distrito', 'ubicaciones')->find_one($eliminado);
+          $distrito = \Model::factory('\Models\Distrito', 'ubicaciones')->find_one($eliminado);
           $distrito->delete();
         }
       }
