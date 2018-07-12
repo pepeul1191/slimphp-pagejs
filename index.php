@@ -17,13 +17,12 @@ session_start();
 $settings = require __DIR__ . '/src/configs/settings.php';
 $app = new \Slim\App($settings);
 
+// Register database
 require __DIR__ . '/src/configs/database.php';
 // Set up dependencies
 require __DIR__ . '/src/configs/dependencies.php';
-
 // Register middleware
 require __DIR__ . '/src/configs/middleware.php';
-
 // Register routes
 require __DIR__ . '/src/configs/routes.php';
 

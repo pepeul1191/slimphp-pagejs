@@ -1,8 +1,6 @@
 <?php
 
 namespace Controller;
-require_once 'src/models/distrito.php';
-require_once 'src/models/vw_distrito_provincia_departamento.php';
 
 class DistritoController extends \Configs\Controller
 {
@@ -90,7 +88,7 @@ class DistritoController extends \Configs\Controller
     $status = 200;
     $nombre = $request->getQueryParam('nombre');
     try {
-      $rs = \Model::factory('VWDistritoProvinciaDepartamento', 'ubicaciones')
+      $rs = \Model::factory('\Models\VWDistritoProvinciaDepartamento', 'ubicaciones')
     		->select('id')
     		->select('nombre')
     		->where_like('nombre', $nombre . '%')
