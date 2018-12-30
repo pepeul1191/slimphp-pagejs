@@ -2,6 +2,9 @@
 
 namespace Configs;
 
+use Symfony\Component\Yaml\Yaml;
+
+
 class Controller
 {
   protected $container;
@@ -33,8 +36,7 @@ class Controller
     return $rpta;
   }
 
-  function load_titles($language){
-    $titles = require __DIR__ . '/../contents/_titles.php';
-    return $titles[$language];
+  function load_titles(){
+    return Yaml::parseFile(__DIR__ . '/../contents/_titles.yml');
   }
 }
