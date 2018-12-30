@@ -1,0 +1,8 @@
+.texto-validacion{color:#dc3545; padding-left: 10px;}
+.form-control{height: 26px !important;}
+.btn > i {margin-right: 5px;}
+.color-error{color:#a94442;}
+.color-warning{color: #8a6d3b;}
+.color-success{color: #3c763d;}
+.modal-header, .modal-footer { margin-bottom: 15px; }
+.form-group > .form-check > .form-check-label { margin-top: 4px; }

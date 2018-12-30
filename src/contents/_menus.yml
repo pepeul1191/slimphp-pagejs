@@ -1,19 +1,19 @@
 sp:
-  admin:
+  access:
     - name: Accesos
-      url: admin/
+      url: access/
       icon: ''
       subtitles:
         - name: Maestros
           items:
             - name: Gestión de Sistemas
-              url: admin/#/system
+              url: access/#/system
         - name: Gestión de Usuarios
           items:
             - name: Gestión de Usuarios
-              url: admin/user/#/
+              url: access/user/#/
             - name: Agregar Usuario
-              url: admin/user/#/add
+              url: access/user/#/add
     - name: Administración
       url: managment/
       icon: ''
