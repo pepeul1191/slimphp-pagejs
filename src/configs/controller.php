@@ -32,4 +32,9 @@ class Controller
     }
     return $rpta;
   }
+
+  function load_titles($language){
+    $titles = require __DIR__ . '/../contents/_titles.php';
+    return $titles[$language];
+  }
 }
