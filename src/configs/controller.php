@@ -39,4 +39,39 @@ class Controller
   function load_titles(){
     return Yaml::parseFile(__DIR__ . '/../contents/_titles.yml');
   }
+
+  function menu_modules($language, $module, $url_active){
+    $menu = Yaml::parseFile(__DIR__ . '/../contents/_menus.yml')[$language][$module];
+    $rpta = '';
+    foreach ($menu as $m) {
+      $t = '';
+      if( $url_active == $m['url']){
+        $t = '<a href="' . $this->constants['base_url'] . $m['url'] . '" class="nav-active">' . $m['name'] . '</a>';
+      } else {
+        $t = '<a href="' . $this->constants['base_url'] . $m['url'] . '" class="">' . $m['name'] . '</a>';
+      }
+      $rpta = $rpta . $t;
+    }
+    return $rpta;
+  }
+
+  function menu_items($language, $module, $url_active){
+    $menu = Yaml::parseFile(__DIR__ . '/../contents/_menus.yml')[$language][$module];
+    $rpta = '';
+    foreach ($menu as $m) {
+      if ($url_active == $m['url']){
+        $subtitles = $m['subtitles'];
+        foreach ($subtitles as $s) {
+          $t = '<li class="li-submodulo">' . $s['name'] . '</li>';
+          $rpta = $rpta . $t;
+          $items = $s['items'];
+          foreach ($items as $i) {
+            $t = '<li class="li-item"><a href="' . $this->constants['base_url'] . $i['url'] . '">' . $i['name'] . '</a></li>';
+            $rpta = $rpta . $t;
+          }
+        }
+      }
+    }
+    return $rpta;
+  }
 }

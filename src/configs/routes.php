@@ -36,4 +36,4 @@ $app->post('/distrito/guardar', DistritoController::class . ':guardar')->add($mw
 $app->get('/distrito/buscar', DistritoController::class . ':buscar')->add($mw_ambiente_csrf);
 $app->get('/distrito/nombre/{distrito_id}', DistritoController::class . ':nombre')->add($mw_ambiente_csrf);
 // admin
-$app->get('/admin', \Admin\Controller\ViewController::class . ':index');
+$app->get('/admin/', \Admin\Controller\ViewController::class . ':index');
