@@ -18,7 +18,7 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
 });
 //login
 $app->get('/login', LoginController::class . ':view')->add($mw_session_false);
-$app->post('/login/acceder', LoginController::class . ':acceder');
+$app->post('/login', LoginController::class . ':access');
 $app->get('/login/ver', LoginController::class . ':ver');
 $app->get('/login/cerrar', LoginController::class . ':cerrar');
 //error

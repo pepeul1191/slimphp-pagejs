@@ -4,7 +4,7 @@ if ( ! function_exists('index_css'))
 {
   function index_css($constants){
     $rpta = null;
-    switch($constants['ambiente_static']){
+    switch($constants['env_static']){
       case 'desarrollo':
         $rpta = [
           'bower_components/bootstrap/dist/css/bootstrap.min',
@@ -29,7 +29,7 @@ if ( ! function_exists('index_js'))
 {
   function index_js($constants){
     $rpta = null;
-    switch($constants['ambiente_static']){
+    switch($constants['env_static']){
       case 'desarrollo':
         $rpta = [
         ];

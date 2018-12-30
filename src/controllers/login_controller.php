@@ -13,34 +13,34 @@ class LoginController extends \Configs\Controller
       'title' => 'Login',
       'csss' => $this->load_css(index_css($this->constants)),
       'jss'=> $this->load_js(index_js($this->constants)),
-      'mensaje' => '',
+      'message' => '',
     ];
     $view = $this->container->view;
     return $view($response, 'blank', 'login/index.phtml', $locals);
   }
 
-  public function acceder($request, $response, $args) {
+  public function access($request, $response, $args) {
     $rpta = '';
     $status = 200;
     $mensaje = '';
-    $continuar = true;
+    $continue = true;
     $csrf_request = $request->getParam($this->constants['csrf']['key']);
     $csrf_app = $this->constants['csrf']['secret'];
     if($csrf_app != $csrf_request){
       $mensaje = 'Token CSRF no es el correcto';
-      $continuar = false;
+      $continue = false;
     }
-    if($continuar == true){
-      $usuario = $request->getParam('usuario');
-      $contrasenia = $request->getParam('contrasenia');
-      if($usuario != $this->constants['login']['usuario'] or $contrasenia != $this->constants['login']['contrasenia']){
-        $continuar = false;
+    if($continue == true){
+      $user = $request->getParam('user');
+      $password = $request->getParam('password');
+      if($user != $this->constants['login']['user'] or $password != $this->constants['login']['password']){
+        $continue = false;
         $mensaje = 'Usuario y/o contraenia no coinciden';
       }
     }
-    if($continuar == true){
-      $_SESSION['usuario'] = $usuario;
-      $_SESSION['estado'] = 'activo';
+    if($continue == true){
+      $_SESSION['user'] = $user;
+      $_SESSION['status'] = 'active';
       $_SESSION['tiempo'] = date('Y-m-d H:i:s');
       $response = $response->withRedirect($this->constants['base_url']);
       return $response;
@@ -62,14 +62,14 @@ class LoginController extends \Configs\Controller
   public function ver($request, $response, $args){
     $rpta = '';
     $status = 200;
-    if (array_key_exists('estado', $_SESSION)) {
-      if($_SESSION['estado'] != 'activo'){
+    if (array_key_exists('status', $_SESSION)) {
+      if($_SESSION['status'] != 'active'){
         $rpta = '<h1>El usuario no se encuentra logueado</h1>';
       }else{
         $rpta = '<h1>Usuario Logeado</h1><ul><li>' .
-          $_SESSION['usuario'] . '</li><li>' .
+          $_SESSION['user'] . '</li><li>' .
           $_SESSION['tiempo'] . '</li><li>' .
-          $_SESSION['estado'] . '</li></ul>';
+          $_SESSION['status'] . '</li></ul>';
       }
     }else{
       $rpta ='<h2>El usuario no se encuentra logueado</h2>';

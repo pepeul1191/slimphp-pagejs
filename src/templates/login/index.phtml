@@ -1,9 +1,9 @@
 <div class="login-page">
   <div class="form">
     <i class="fa fa-map-marker" aria-hidden="true" id="logo-brand"></i>
-    <form class="login-form" action="<?php echo $constants['base_url']; ?>login/acceder" method="post">
-      <input type="text" placeholder="usuario" name="usuario"/>
-      <input type="password" placeholder="contrasenia" name="contrasenia"/>
+    <form class="login-form" action="<?php echo $constants['base_url']; ?>login" method="post">
+      <input type="text" placeholder="usuario" name="user"/>
+      <input type="password" placeholder="contrasenia" name="password"/>
       <input type="hidden" name="<?php echo $constants['csrf']['key']; ?>" value="<?php echo $constants['csrf']['secret']; ?>">
       <button type="submit">login</button>
       <p class="mensaje-error"><?php echo $mensaje; ?></p>
