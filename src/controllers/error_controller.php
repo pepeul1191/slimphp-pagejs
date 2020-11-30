@@ -74,6 +74,6 @@ class ErrorController extends \Configs\Controller
     ];
     $view = $this->container->view;
     $response = $response->withStatus($status);
-    return $view($new_response, 'blank', 'error/access.phtml', $locals);
+    return $view($response, 'blank', 'error/access.phtml', $locals);
   }
 }
