@@ -25,7 +25,7 @@ $app->get('/login/cerrar', LoginController::class . ':cerrar');
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home
-$app->get('/', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/', HomeController::class . ':view');
 //servicios REST
 $app->get('/departamento/listar', DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
 $app->post('/departamento/guardar', DepartamentoController::class . ':guardar')->add($mw_ambiente_csrf);
