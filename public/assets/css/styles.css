@@ -1,10 +1,4 @@
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
+/* video */
 
 .video-background-holder {
   position: relative;
@@ -58,4 +52,29 @@ code {
   padding: 0 0.15rem;
   background: #f5f5f5;
   border-radius: 0.2rem;
+}
+
+
+/* footer */
+
+.footer-social{
+  background-color: var(--primary-color);
+  color: var(--background-primary-color);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.social-link{
+  color: var(--background-primary-color);
+}
+
+.social-link:hover{
+  color: white;
+}
+
+.footer-below{
+  background-color: #343434;
+  color: #FDFDFD;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
