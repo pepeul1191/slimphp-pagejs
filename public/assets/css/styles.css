@@ -70,6 +70,7 @@ code {
 
 .social-link:hover{
   color: white;
+  font-size: 15px;
 }
 
 .footer-below{
@@ -77,4 +78,14 @@ code {
   color: #FDFDFD;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.footer-below > .container > .row > .col-lg-12 > a {
+  color: var(--background-primary-color);
+}
+
+.footer-below > .container > .row > .col-lg-12 > a:hover{
+  color: #FFF;
+  text-decoration: none;
+  font-weight: 500;
 }
