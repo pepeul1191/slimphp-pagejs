@@ -58,7 +58,7 @@ code {
 /* footer */
 
 .footer-social{
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   color: var(--background-primary-color);
   padding-top: 10px;
   padding-bottom: 10px;
@@ -71,6 +71,13 @@ code {
 .social-link:hover{
   color: white;
   font-size: 15px;
+}
+
+.footer-above{
+  background-color: var(--primary-color);
+  color: #FDFDFD;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .footer-below{
@@ -88,4 +95,48 @@ code {
   color: #FFF;
   text-decoration: none;
   font-weight: 500;
+}
+
+.contact-info .info-item {
+  position: relative;
+  padding-left: 45px;
+}
+
+.contact-info .info-item i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFF;
+  font-weight: 600;
+}
+
+.contact-info .info-item h6 {
+  font-size: 16px;
+  line-height: 24px;
+  color: "Roboto", sans-serif;
+  font-weight: bold;
+  margin-bottom: 0px;
+  color: #FFF;
+}
+
+.contact-info .info-item p {
+  font-size: 14px;
+  line-height: 24px;
+  padding: 2px 0px;
+}
+
+.form-control, .btn{
+  border-radius: 0px;
+}
+
+.btn-lg{
+  font-size: 17px;
+}
+
+#btnContact{
+  background-color: var(--secondary-color);
+  color: #FDFDFD;
+  border-color: #886573;
 }
