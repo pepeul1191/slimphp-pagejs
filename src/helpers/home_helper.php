@@ -11,6 +11,7 @@ if ( ! function_exists('index_css'))
 				  'bower_components/font-awesome/css/font-awesome.min',
           'assets/css/constants',
           'assets/css/styles',
+          'assets/css/carousel',
         ];
         break;
       case 'produccion':
