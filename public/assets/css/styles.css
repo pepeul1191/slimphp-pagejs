@@ -140,3 +140,21 @@ code {
   color: #FDFDFD;
   border-color: #886573;
 }
+
+.float{
+	position:fixed;
+  width: 80px;
+  height: 80px;
+	bottom:40px;
+	right:40px;
+	background-color:#00bfa5;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:50px;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
