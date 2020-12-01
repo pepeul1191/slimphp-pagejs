@@ -81,6 +81,20 @@ code {
   padding-left: 45px;
 }
 
+.media-body{
+  padding-top: 30px;
+  padding-left: 20px;
+}
+
+.media {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+  .modal-dialog {
+    max-width: 1200px; /* New width for default modal */
+  }
+}
 /* speakers */
 
 .blockquote-box{border-right:5px solid var(--secondary-color);margin-bottom: 40px;

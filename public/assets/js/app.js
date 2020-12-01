@@ -1,3 +1,70 @@
+var events_data = [];
+
+function showEvent(event, id){
+  var eventSearched = {};
+  var speakers = '';
+  for(var i = 0; i < events_data.length; i++){
+    if(parseInt(events_data[i]['id']) == id){
+      eventSearched = events_data[i];
+    }
+  }
+  for(var i = 0; i < eventSearched.speakers.length; i++){
+    var name = eventSearched.speakers[i].names + eventSearched.speakers[i].last_names;
+    var temp = `
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object"  width="100" height="100" src="${REMOTE_URL}${eventSearched.speakers[i].picture_url}" alt="${name}">
+          </a>
+        </div>
+        <div class="media-body">
+          ${name}
+        </div>
+      </div>
+    `;
+    speakers = speakers + temp;
+  }
+  if(speakers != ''){
+    speakers = '<p>Expositores:</p>' + speakers;
+  }
+  var modalContent = `
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">${eventSearched.event_type_name} - ${eventSearched.name}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="card-img-top" src="${REMOTE_URL}${eventSearched.picture_url}" alt="Card image cap">
+            </div>
+            <div class="col-md-6">
+              <p>Fecha de Inicio: ${eventSearched.init_date}</p>
+              <p>Hora de Inicio: ${eventSearched.init_hour}</p>
+              <p>Duración(horas): ${eventSearched.hours}</p>
+              <p>Detalle del Evento: <br> ${eventSearched.description}</p>
+              ${speakers}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Contáctanos</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `;
+  $('#modal').empty();
+  $('#modal').append(modalContent);
+  $('#modal').modal('toggle');
+  // prevent default
+  event.preventDefault();
+  return false;
+}
+
 function loadEvents(){
   $.ajax({
     type: 'GET',
@@ -11,6 +78,7 @@ function loadEvents(){
       var events = JSON.parse(data);
       var html = [];
       var i = 0;
+      events_data = events;
       events.forEach(event => {
         var card = '';
         if(i == 0){
@@ -22,7 +90,7 @@ function loadEvents(){
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
                 <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
-                <a href="#" class="btn btn-primary">Ver Más</a>
+                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
               </div>
               </div>
             </div>
@@ -38,7 +106,7 @@ function loadEvents(){
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
                 <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
-                <a href="#" class="btn btn-primary">Ver Más</a>
+                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
               </div>
               </div>
             </div>
