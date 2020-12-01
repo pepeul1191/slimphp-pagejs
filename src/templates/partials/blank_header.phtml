@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $csss; ?>
     <script type="text/javascript">
-
+        var BASE_URL = '<?php echo $constants['base_url'];?>';
+        var STATIC_URL  = '<?php echo $constants['static_url'];?>';
+        var CSRF = "<?php echo $constants['csrf']['secret']; ?>";
+        var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
+        var REMOTE_URL = '<?php echo $constants['remote_url'];?>';
     </script>
 </head>
 <body>

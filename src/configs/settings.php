@@ -17,6 +17,7 @@ return [
       'base_url' => 'http://localhost:3000/',
       'static_url' => 'http://localhost:3000/public/',
       'env_static' => 'desarrollo',
+      'remote_url' => 'http://localhost:8080/public/',
       'validation_csrf' => 'disable',
       'validation_session' => 'able',
       'login' => [
