@@ -1,8 +1,7 @@
 function loadEvents(){
   $.ajax({
     type: 'GET',
-    // url: BASE_URL + 'admin/event/get',
-    url: 'http://localhost:8080/admin/event/recent-list',
+    url: BASE_URL + 'event/recent-list',
     data: {},
     headers: {
       //[CSRF_KEY]: CSRF,
@@ -22,7 +21,7 @@ function loadEvents(){
               <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
-                <p class="card-text">${event.init_date}</p>
+                <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
                 <a href="#" class="btn btn-primary">Ver Más</a>
               </div>
               </div>
@@ -38,7 +37,7 @@ function loadEvents(){
               <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
-                <p class="card-text">${event.init_date}</p>
+                <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
                 <a href="#" class="btn btn-primary">Ver Más</a>
               </div>
               </div>

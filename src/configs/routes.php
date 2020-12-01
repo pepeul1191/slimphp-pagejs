@@ -9,6 +9,7 @@ use Controller\HomeController;
 use Controller\LoginController;
 use Controller\ProvinciaController;
 use Controller\SpeakerController;
+use Controller\EventController;
 use Admin\Controller\ViewController;
 
 // Routes
@@ -28,6 +29,7 @@ $app->get('/error/access/{numero}', ErrorController::class . ':access');
 // site
 $app->get('/', HomeController::class . ':view');
 $app->get('/speaker/random-list', SpeakerController::class . ':randomList');
+$app->get('/event/recent-list', EventController::class . ':recentList');
 //servicios REST
 
 $app->get('/departamento/listar', DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
