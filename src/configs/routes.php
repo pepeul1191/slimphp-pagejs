@@ -8,6 +8,7 @@ use Controller\ErrorController;
 use Controller\HomeController;
 use Controller\LoginController;
 use Controller\ProvinciaController;
+use Controller\SpeakerController;
 use Admin\Controller\ViewController;
 
 // Routes
@@ -24,9 +25,11 @@ $app->get('/login/ver', LoginController::class . ':ver');
 $app->get('/login/cerrar', LoginController::class . ':cerrar');
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
-//home
+// site
 $app->get('/', HomeController::class . ':view');
+$app->get('/speaker/random-list', SpeakerController::class . ':randomList');
 //servicios REST
+
 $app->get('/departamento/listar', DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
 $app->post('/departamento/guardar', DepartamentoController::class . ':guardar')->add($mw_ambiente_csrf);
 $app->get('/provincia/listar/{departamento_id}', ProvinciaController::class . ':listar')->add($mw_ambiente_csrf);

@@ -1,8 +1,7 @@
 function loadSpeakers(){
   $.ajax({
     type: 'GET',
-    // url: BASE_URL + 'admin/event/get',
-    url: 'http://localhost:8080/admin/speaker/random-list',
+    url: BASE_URL + 'speaker/random-list',
     data: {
       number: 6
     },
