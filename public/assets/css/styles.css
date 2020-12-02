@@ -65,6 +65,11 @@ section{
 
 /* video */
 
+video{/*
+  max-width: 100%;
+  height: auto;
+*/}
+
 .video-background-holder {
   position: relative;
   background-color: black;
@@ -167,6 +172,7 @@ section{
 
 .social-link{
   color: var(--background-primary-color);
+  margin-left: 20px;
 }
 
 .social-link:hover{

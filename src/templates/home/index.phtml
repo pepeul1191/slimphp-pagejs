@@ -11,19 +11,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item active" id="linkInicio">
           <a class="nav-link" href="/">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="linkNosotros">
           <a class="nav-link" href="/nosotros">Nosotros</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="linkCapacitaciones">
           <a class="nav-link" href="/capacitaciones">Capacitaciones</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="linkPonentes">
           <a class="nav-link" href="/ponentes">Ponentes</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="linkContacto">
           <a class="nav-link" href="/contacto">Contacto</a>
         </li>
       </ul>
@@ -115,6 +115,9 @@
         <a href="https://www.facebook.com/LegisJuristasEscuelaDeDerecho/" class="social-link pull-right">
           <i class="fa fa-facebook-official" aria-hidden="true"></i>
         </a>
+        <a href="https://www.instagram.com/legis_juristas/" class="social-link pull-right">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -125,6 +128,7 @@
       <div class="row" id="contact">
         <div class="footer-col col-md-4">
           <h2>Contacto</h2>
+          <p id="message">hola</p>
           <div class="form-group">
             <label for="txtName">Nombre</label>
             <input type="text" class="form-control" id="txtName" placeholder="Ingrese su nombre">
@@ -137,7 +141,7 @@
         <div class="footer-col col-md-4">
           <div class="form-group">
             <label for="txtMessage">Mensaje</label>
-            <textarea class="form-control" id="txtMessage" rows="4"></textarea>
+            <textarea class="form-control" id="txtMessage" rows="6"></textarea>
           </div>
           <button type="button" class="btn btn-primary btn-lg btn-block" id="btnContact" onclick="sendEmail(event)">Enviar</button>
         </div>

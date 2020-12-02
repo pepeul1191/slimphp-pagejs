@@ -1,5 +1,10 @@
 var events_data = [];
 
+function modalContactClick(event){
+  $('#eventModal').modal('toggle');
+  page.redirect('/contacto');
+}
+
 function showEvent(event, id){
   var eventSearched = {};
   var speakers = '';
@@ -51,7 +56,7 @@ function showEvent(event, id){
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Contáctanos</button>
+          <button type="button" class="btn btn-primary" onclick="modalContactClick(event)">Contáctanos</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -196,35 +201,48 @@ function router(){
     $('html, body').animate({ 
       scrollTop: pos
     }, 900);
+    $('.nav-item').removeClass('active');
+    $('#linkInicio').addClass('active');
   });
   page('/nosotros', function(){
     pos = $('#about').offset().top - 100;
     $('html, body').animate({ 
       scrollTop: pos
     }, 900);
+    $('.nav-item').removeClass('active');
+    $('#linkNosotros').addClass('active');
+    $('.navbar-collapse').collapse('hide');
   });
   page('/capacitaciones', function(){
     pos = $('#events').offset().top - 100;
     $('html, body').animate({ 
       scrollTop: pos
     }, 900);
+    $('.nav-item').removeClass('active');
+    $('#linkCapacitaciones').addClass('active');
+    $('.navbar-collapse').collapse('hide');
   });
   page('/ponentes', function(){
     pos = $('#speakers').offset().top - 100;
     $('html, body').animate({ 
       scrollTop: pos
     }, 900);
+    $('.nav-item').removeClass('active');
+    $('#linkPonentes').addClass('active');
+    $('.navbar-collapse').collapse('hide');
   });
   page('/contacto', function(){
     pos = $('#contact').offset().top - 100;
     $('html, body').animate({ 
       scrollTop: pos
     }, 900);
+    $('.nav-item').removeClass('active');
+    $('#linkContacto').addClass('active');
+    $('.navbar-collapse').collapse('hide');
   });
   page('*', function(){
     alert('notFound')
   })
-  page()
 }
 
 $(document).ready(function() {
@@ -232,4 +250,5 @@ $(document).ready(function() {
   loadSpeakers();
   loadEvents();
   router();
+  page()
 });
