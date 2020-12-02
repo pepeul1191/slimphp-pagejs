@@ -14,6 +14,13 @@ Basado en Slim Framework 3 Skeleton Application
 
 Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambiente_session' a 'inactivo' .
 
+## Archivo .env en contrllers
+
+    MAIL_USER="demo@correo.pe"
+    MAIL_PASS="demo123"
+    MAIL_RESPONSE="demo@correo.pe"
+    MAIL_HOST="mail.correo.pe"
+
 ---
 
 Fuentes:

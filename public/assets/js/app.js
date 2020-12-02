@@ -191,7 +191,72 @@ function loadSpeakers(){
 }
 
 function sendEmail(event){
-  alert();
+  var name = $('#txtName').val();
+  var email = $('#txtEmail').val();
+  var message = $('#txtMessage').val();
+  var validationOk = true;
+  // name
+  if(name == ''){
+    validationOk = false;
+    $('#txtName').attr('placeholder', 'Ingrese su nombre'); 
+    $('#txtName').addClass('input-warning');
+  }else{
+    $('#txtName').removeClass('input-warning');
+  }
+  // email
+  console.log(email);
+  if(email == ''){
+    validationOk = false;
+    $('#txtEmail').attr('placeholder', 'Ingrese su correo'); 
+    $('#txtEmail').addClass('input-warning');
+  }else{
+    var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(regex.test(email) == false){
+      validationOk = false;
+      $('#txtEmail').val('');
+      $('#txtEmail').attr('placeholder', 'Ingrese su correo válido'); 
+    $('#txtEmail').addClass('input-warning');
+    }else{
+      $('#txtEmail').removeClass('input-warning');
+    }
+  }
+  // message
+  console.log(message);
+  if(message == ''){
+    validationOk = false;
+    $('#txtMessage').attr('placeholder', 'Ingrese su mensaje'); 
+    $('#txtMessage').addClass('input-warning');
+  }else{
+    $('#txtMessage').removeClass('input-warning');
+  }
+  // validation ok, send email
+  if(validationOk){
+    $('#messageForm').html('');
+    $.ajax({
+      type: 'POST',
+      url: BASE_URL + 'email/send',
+      data: {
+        name: name,
+        email: email,
+        message: message,
+      },
+      headers: {
+        [CSRF_KEY]: CSRF,
+      },
+      async: false,
+      success: function(data){
+        // show message
+        $('#messageForm').html('Detalle de ponente guardado con éxito');
+      },
+      error: function(xhr, status, error){
+        // show message
+        $('#messageForm').html('Ocurrió un error no controlado en grabar el detalle del ponente');
+        console.error(error);
+      }
+    });
+  }else{
+    $('#messageForm').html('Complete los campos indicados');
+  }
 }
 
 function router(){

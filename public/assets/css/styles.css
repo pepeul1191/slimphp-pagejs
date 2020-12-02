@@ -248,6 +248,25 @@ video{/*
   border-color: #886573;
 }
 
+.input-warning{
+  border-color: var(--red);
+}
+
+.input-warning::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--red);
+  opacity: 1; /* Firefox */
+}
+
+.input-warning:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--red);
+}
+
+.input-warning::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--red);
+}
+
+/* whastapp */
+
 .float{
 	position:fixed;
   width: 80px;

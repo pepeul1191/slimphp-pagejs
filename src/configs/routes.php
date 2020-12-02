@@ -10,6 +10,7 @@ use Controller\LoginController;
 use Controller\ProvinciaController;
 use Controller\SpeakerController;
 use Controller\EventController;
+use Controller\EmailController;
 use Admin\Controller\ViewController;
 
 // Routes
@@ -34,6 +35,7 @@ $app->get('/ponentes', HomeController::class . ':view');
 $app->get('/contacto', HomeController::class . ':view');
 $app->get('/speaker/random-list', SpeakerController::class . ':randomList');
 $app->get('/event/recent-list', EventController::class . ':recentList');
+$app->post('/email/send', EmailController::class . ':send');
 //servicios REST
 
 $app->get('/departamento/listar', DepartamentoController::class . ':listar')->add($mw_ambiente_csrf);
