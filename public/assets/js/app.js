@@ -161,7 +161,7 @@ function loadSpeakers(){
       var card = '<div class="row">';
       for(var i = 0; i < speakers.length; i++){
         card = card + `
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-12 col-sx-12 ">
           <div class="blockquote-box clearfix">
             <div class="square pull-left">
               <img width="85" height="85" src="${REMOTE_URL}${speakers[i].picture_url}" alt="" class="" />
