@@ -189,8 +189,47 @@ function sendEmail(event){
   alert();
 }
 
+function router(){
+  var pos = 0;
+  page('/', function(){
+    pos = $('#home').offset().top - 100;
+    $('html, body').animate({ 
+      scrollTop: pos
+    }, 900);
+  });
+  page('/nosotros', function(){
+    pos = $('#about').offset().top - 100;
+    $('html, body').animate({ 
+      scrollTop: pos
+    }, 900);
+  });
+  page('/capacitaciones', function(){
+    pos = $('#events').offset().top - 100;
+    $('html, body').animate({ 
+      scrollTop: pos
+    }, 900);
+  });
+  page('/ponentes', function(){
+    pos = $('#speakers').offset().top - 100;
+    $('html, body').animate({ 
+      scrollTop: pos
+    }, 900);
+  });
+  page('/contacto', function(){
+    pos = $('#contact').offset().top - 100;
+    $('html, body').animate({ 
+      scrollTop: pos
+    }, 900);
+  });
+  page('*', function(){
+    alert('notFound')
+  })
+  page()
+}
+
 $(document).ready(function() {
   // load speakers/events
   loadSpeakers();
-  loadEvents()
+  loadEvents();
+  router();
 });

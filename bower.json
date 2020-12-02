@@ -25,6 +25,7 @@
   "dependencies": {
     "swp-backbone": "^1.0.3",
     "requirejs": "^2.3.5",
-    "video.js": "^7.0.3"
+    "video.js": "^7.0.3",
+    "page": "^1.11.5"
   }
 }

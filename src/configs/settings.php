@@ -14,8 +14,8 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
-      'base_url' => 'http://192.168.1.4:3000/',
-      'static_url' => 'http://192.168.1.4:3000/public/',
+      'base_url' => 'http://localhost:3000/',
+      'static_url' => 'http://localhost:3000/public/',
       'env_static' => 'desarrollo',
       'remote_url' => 'http://localhost:8080/public/',
       'service_url' => 'http://localhost:8080/',

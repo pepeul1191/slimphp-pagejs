@@ -28,6 +28,10 @@ $app->get('/login/cerrar', LoginController::class . ':cerrar');
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 // site
 $app->get('/', HomeController::class . ':view');
+$app->get('/nosotros', HomeController::class . ':view');
+$app->get('/capacitaciones', HomeController::class . ':view');
+$app->get('/ponentes', HomeController::class . ':view');
+$app->get('/contacto', HomeController::class . ':view');
 $app->get('/speaker/random-list', SpeakerController::class . ':randomList');
 $app->get('/event/recent-list', EventController::class . ':recentList');
 //servicios REST
