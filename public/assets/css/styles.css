@@ -127,8 +127,7 @@ section{
 .blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
 .blockquote-box > .text{width: 65%; float: right;}
 .blockquote-box > .square{width: 25%; float: left;}
-
-
+#speakers{}
 
 /* footer */
 

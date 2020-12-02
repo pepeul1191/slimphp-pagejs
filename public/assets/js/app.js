@@ -158,7 +158,6 @@ function loadSpeakers(){
     async: false,
     success: function(data){
       var speakers = JSON.parse(data);
-      var html = [];
       var card = '<div class="row">';
       for(var i = 0; i < speakers.length; i++){
         card = card + `
@@ -174,7 +173,6 @@ function loadSpeakers(){
           </div>
         </div>
         `;
-
       }
       $("#speakers-row").append(card);
     },
