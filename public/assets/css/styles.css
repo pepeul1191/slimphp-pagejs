@@ -265,6 +265,10 @@ video{/*
   color: var(--red);
 }
 
+#messageForm{
+  font-weight: 600;
+}
+
 /* whastapp */
 
 .float{

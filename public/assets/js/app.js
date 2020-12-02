@@ -244,9 +244,18 @@ function sendEmail(event){
         [CSRF_KEY]: CSRF,
       },
       async: false,
+      beforeSend: function(){
+        $('#btnContact').attr('disabled', true);
+      },
+      complete: function(){
+        $('#btnContact').attr('disabled', false);
+      },
       success: function(data){
         // show message
-        $('#messageForm').html('Detalle de ponente guardado con éxito');
+        $('#txtName').val('');
+        $('#txtEmail').val('');
+        $('#txtMessage').val('');
+        $('#messageForm').html('Su mensaje ha sido enviado con éxito');
       },
       error: function(xhr, status, error){
         // show message
@@ -315,5 +324,5 @@ $(document).ready(function() {
   loadSpeakers();
   loadEvents();
   router();
-  page()
+  page();
 });
