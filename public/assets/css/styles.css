@@ -2,8 +2,19 @@ body {
 	font-family: "Open Sans", sans-serif;
 }
 
+p{
+  font-size: 15px;
+}
+
 .section-title{
-  padding-bottom: 40px;
+  padding-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+section{
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .btn-primary {
@@ -16,6 +27,14 @@ body {
   color: #fff;
   background-color: #343434;
   border-color:black;
+}
+
+.separator{
+  margin: 22px auto 60px auto;
+  width: 72px;
+  border-style: solid;
+  border-top-width: 2px;
+  border-color: var(--secondary-color);
 }
 
 /* video */
@@ -60,18 +79,15 @@ body {
   z-index: 1;
 }
 
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSES
-* ==========================================
-*
-*/
+/* about */
 
-code {
-  padding: 0 0.15rem;
-  background: #f5f5f5;
-  border-radius: 0.2rem;
+#about{
+  background-color: #343434;
+  color: var(--background-primary-color);
+}
+
+.text-about{
+  padding-top: 30px;
 }
 
 /* events */
@@ -97,8 +113,7 @@ code {
 }
 /* speakers */
 
-.blockquote-box{border-right:5px solid var(--secondary-color);margin-bottom: 40px;
-  padding-right: 40px;}
+.blockquote-box{border-right:2px solid var(--secondary-color);margin-bottom: 65px; padding-right: 40px;}
 .blockquote-box .square{width:125px;min-height:50px;margin-right:30px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
 .blockquote-box.blockquote-primary{border-color:#357EBD}
 .blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
@@ -112,6 +127,9 @@ code {
 .blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
 .blockquote-box > .text{width: 65%; float: right;}
 .blockquote-box > .square{width: 25%; float: left;}
+
+
+
 /* footer */
 
 .footer-social{

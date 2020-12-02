@@ -1,5 +1,5 @@
-<!-- modal -->
-<div class="modal" tabindex="-1" role="dialog" id="modal"></div>
+<!-- event modal -->
+<div class="modal" tabindex="-1" role="dialog" id="eventModal"></div>
 <!-- nav -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -41,7 +41,8 @@
       <div class="w-100 text-white">
         <h1 class="display-4">Bootstrap video background</h1>
         <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-        <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white"> <u>Bootstrapious</u></a>
+        <p class="lead" class="text-white" onclick="showVideo(event)">
+          <u>Ver Video</u>
         </p>
       </div>
     </div>
@@ -60,9 +61,27 @@
     </div>
   </div>
 </section>
+<!-- AboutUs -->
+<section id="about">
+  <h2 class="section-title text-center">Nosotros</h2>
+  <hr class="separator">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="text-center">
+          <img src="<?php echo $constants['static_url'];?>assets/img/about.png" heigth="250" width="250" alt="CoolBrand">
+        </div>
+      </div>
+      <div class="col-md-6 text-about">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- speakers -->
 <section class="container" id="eventes">
-  <h2 class="section-title">Nuestros Cursos y Diplomados</h2>
+  <h2 class="section-title text-center">Nuestros Cursos y Diplomados</h2>
+  <hr class="separator">
   <div class="row mx-auto my-auto">
     <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner w-100" role="listbox" id="events-carousel">  </div>
@@ -79,7 +98,8 @@
 </section>
 <!-- speakers -->
 <section class="container" id="speakers">
-  <h2 class="section-title">Algunos de Nuestros Ilustros Ponentes</h2>
+  <h2 class="section-title text-center">Algunos de Nuestros Ilustres Ponentes</h2>
+  <hr class="separator">
   <div id="speakers-row">
   </div>
 </section>
@@ -105,20 +125,20 @@
         <div class="footer-col col-md-4">
           <h2>Contacto</h2>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Nombre</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <label for="txtName">Nombre</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Ingrese su nombre">
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1">Correo</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <label for="txtEmail">Correo</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="Ingrese su correo">
           </div>
         </div>
         <div class="footer-col col-md-4">
           <div class="form-group">
-            <label for="exampleFormControlInput1">Mensaje</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            <label for="txtMessage">Mensaje</label>
+            <textarea class="form-control" id="txtMessage" rows="4"></textarea>
           </div>
-          <button type="button" class="btn btn-primary btn-lg btn-block" id="btnContact">Enviar</button>
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="btnContact" onclick="sendEmail(event)">Enviar</button>
         </div>
         <div class="footer-col col-md-4">
         <div class="contact-info">

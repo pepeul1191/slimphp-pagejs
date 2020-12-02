@@ -57,9 +57,9 @@ function showEvent(event, id){
       </div>
     </div>
   `;
-  $('#modal').empty();
-  $('#modal').append(modalContent);
-  $('#modal').modal('toggle');
+  $('#eventModal').empty();
+  $('#eventModal').append(modalContent);
+  $('#eventModal').modal('toggle');
   // prevent default
   event.preventDefault();
   return false;
@@ -185,6 +185,10 @@ function loadSpeakers(){
       resp.status = xhr.status;
     }
   });
+}
+
+function sendEmail(event){
+  alert();
 }
 
 $(document).ready(function() {
