@@ -21,6 +21,11 @@ Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambie
     MAIL_RESPONSE="demo@correo.pe"
     MAIL_HOST="mail.correo.pe"
 
+### Dump y Restore Mysql
+
+    $ mysqldump -u root -p classroom > db/classroom.sql
+    $ mysql -u root -p classroom < db/classroom.sql
+
 ---
 
 Fuentes:

@@ -1,16 +1,147 @@
-var events_data = [];
+var recentEvents = [];
+var actualEventPage = 1;
 
 function modalContactClick(event){
   $('#eventModal').modal('toggle');
   page.redirect('/contacto');
 }
 
-function showEvent(event, id){
+function prevEventPage(e){
+  if(actualEventPage != 1){
+    searchEvents(e, actualEventPage - 1);
+  }else{
+    e.preventDefault();
+    return false;
+  }
+};
+
+function nextEventPage(e){
+  var pageNumber = $('#paginationEvents').children().length - 2;
+  if((actualEventPage + 1) <= pageNumber){
+    searchEvents(e, actualEventPage + 1);
+  }else{
+    e.preventDefault();
+    return false;
+  }
+};
+
+function searchEvents(e, page){
+  if(typeof page === 'undefined'){
+    actualEventPage = 1;
+  }else{
+    actualEventPage = page;
+  }
+  $.ajax({
+    type: 'GET',
+    url: BASE_URL + 'event/search',
+    data: {
+      specialism_id: $('#sclSpecialism').val(),
+      page: actualEventPage,
+      step: 6,
+      date: 'past',
+    },
+    headers: {
+      //[CSRF_KEY]: CSRF,
+    },
+    async: false,
+    success: function(data){
+      var events = JSON.parse(data);
+      var cards = '';
+      // cards
+      $("#events-row").empty();
+      events.list.forEach(event => {
+        var card = `
+            <div class="col-md-4">
+              <div class="card" style="">
+              <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">${event.name}</h5>
+                <p class="card-text">${event.init_date}</p>
+                <a href="#" class="btn btn-primary">Ver Más</a>
+              </div>
+              </div>
+            </div>
+          `;
+        cards = cards + card;
+      });
+      $("#events-row").append(cards);
+      // pagination
+      var pagination = 
+        `<li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous" onclick="prevEventPage(event)">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>`;
+      for(var i = 0; i < events.pages; i++){
+        var link = '';
+        if(actualEventPage == (i + 1)){
+          link = `
+            <li class="page-item">
+              <a class="page-link active-page" href="#" onclick="searchEvents(event, ${i + 1})">${i + 1}</a>
+            </li>`;
+        }else{
+          link = `
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="searchEvents(event, ${i + 1})">${i + 1}</a>
+            </li>`;
+        }
+        pagination = pagination + link;
+      }
+      pagination = pagination + 
+        `<li class="page-item">
+          <a class="page-link" href="#" aria-label="Next" onclick="nextEventPage(event)">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+        </li>`;
+      $("#paginationEvents").empty();
+      $("#paginationEvents").append(pagination);
+    },
+    error: function(xhr, status, error){
+      var resp = {};
+      console.error(error);
+      resp.message = JSON.parse(xhr.responseText);
+      resp.status = xhr.status;
+    }
+  });
+  e.preventDefault();
+  return false;
+}
+
+function loadSpecialisms(){
+  $.ajax({
+    type: 'GET',
+    url: BASE_URL + 'specialism/list',
+    data: {},
+    headers: {
+      //[CSRF_KEY]: CSRF,
+    },
+    async: false,
+    success: function(data){
+      var specialisms = JSON.parse(data);
+      var options = '<option value="E">Todas</option>';
+      specialisms.forEach(specialism => {
+        var select = `<option value="${specialism.id}">${specialism.name}</option>`;
+        options = options + select;
+      });
+      $('#sclSpecialism').append(options);
+    },
+    error: function(xhr, status, error){
+      var resp = {};
+      console.error(error);
+      resp.message = JSON.parse(xhr.responseText);
+      resp.status = xhr.status;
+    }
+  });
+}
+
+function showRecentEvents(event, id){
   var eventSearched = {};
   var speakers = '';
-  for(var i = 0; i < events_data.length; i++){
-    if(parseInt(events_data[i]['id']) == id){
-      eventSearched = events_data[i];
+  for(var i = 0; i < recentEvents.length; i++){
+    if(parseInt(recentEvents[i]['id']) == id){
+      eventSearched = recentEvents[i];
     }
   }
   for(var i = 0; i < eventSearched.speakers.length; i++){
@@ -42,18 +173,7 @@ function showEvent(event, id){
           </button>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-6">
-              <img class="card-img-top" src="${REMOTE_URL}${eventSearched.picture_url}" alt="Card image cap">
-            </div>
-            <div class="col-md-6">
-              <p>Fecha de Inicio: ${eventSearched.init_date}</p>
-              <p>Hora de Inicio: ${eventSearched.init_hour}</p>
-              <p>Duración(horas): ${eventSearched.hours}</p>
-              <p>Detalle del Evento: <br> ${eventSearched.description}</p>
-              ${speakers}
-            </div>
-          </div>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="modalContactClick(event)">Contáctanos</button>
@@ -62,12 +182,6 @@ function showEvent(event, id){
       </div>
     </div>
   `;
-  $('#eventModal').empty();
-  $('#eventModal').append(modalContent);
-  $('#eventModal').modal('toggle');
-  // prevent default
-  event.preventDefault();
-  return false;
 }
 
 function loadEvents(){
@@ -83,7 +197,7 @@ function loadEvents(){
       var events = JSON.parse(data);
       var html = [];
       var i = 0;
-      events_data = events;
+      recentEvents = events;
       events.forEach(event => {
         var card = '';
         if(i == 0){
@@ -321,8 +435,11 @@ function router(){
 
 $(document).ready(function() {
   // load speakers/events
+  loadSpecialisms();
   loadSpeakers();
+  // showRecentEvents();
   loadEvents();
   router();
   page();
+  $("#bthSearch").click();
 });
