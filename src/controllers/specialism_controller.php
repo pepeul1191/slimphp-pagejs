@@ -9,7 +9,7 @@ class SpecialismController extends \Configs\Controller
     $status = 200;
     try {
       $number = $request->getQueryParam('number');
-      $url = $this->constants['service_url'] . 'admin/specialism/list';
+      $url = $this->constants['service_url'] . 'admin/specialism/list-only-in-events?date=init_date<CURDATE()';
       $rs = \Unirest\Request::get($url);
       $rpta = $rs->{'raw_body'};
     }catch (Exception $e) {

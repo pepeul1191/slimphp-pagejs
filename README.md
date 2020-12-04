@@ -23,7 +23,12 @@ Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambie
 
 ### Dump y Restore Mysql
 
+Dump
+
     $ mysqldump -u root -p classroom > db/classroom.sql
+
+Restore
+
     $ mysql -u root -p classroom < db/classroom.sql
 
 ---

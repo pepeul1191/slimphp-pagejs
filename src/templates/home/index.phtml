@@ -85,12 +85,18 @@
 
   <h3 class="section-subtitle">Ponemos a su Disposicion Nuestros Cursos y Diplomados de Alta Especialización</h3>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="form-inline" id="rowEventsFilters">
-          <label>Categoría</label>
-          <select class="form-control" id="sclSpecialism">
-          </select>            
-          <button class="btn btn-primary" type="button" tabindex="-1" onclick="searchEvents(event)" id="bthSearch">Buscar</button>
+        <label>Especilidad</label>
+        <select class="form-control" id="sclSpecialism">
+        </select>
+        <label>Categoría</label>
+        <select class="form-control" id="sclType">
+          <option value="E"></option>
+          <option value="1">Curso</option>
+          <option value="2">Diplomado</option>
+        </select>            
+        <button class="btn btn-primary" type="button" tabindex="-1" onclick="searchEvents(event)" id="bthSearch">Buscar</button>
       </div>
     </div>
   </div>

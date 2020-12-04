@@ -142,7 +142,13 @@ video{/*
 }
 
 #sclSpecialism{
-  width: 60%;
+  width: 30%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#sclType{
+  width: 20%;
   margin-left: 20px;
   margin-right: 20px;
 }

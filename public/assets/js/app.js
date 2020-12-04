@@ -184,7 +184,7 @@ function showRecentEvents(event, id){
   `;
 }
 
-function loadEvents(){
+function loadRecentEvents(){
   $.ajax({
     type: 'GET',
     url: BASE_URL + 'event/recent-list',
@@ -438,7 +438,7 @@ $(document).ready(function() {
   loadSpecialisms();
   loadSpeakers();
   // showRecentEvents();
-  loadEvents();
+  // loadRecentEvents();
   router();
   page();
   $("#bthSearch").click();
