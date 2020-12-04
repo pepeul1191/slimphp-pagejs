@@ -1,8 +1,10 @@
 var recentEvents = [];
+var passedEvents = [];
 var actualEventPage = 1;
 
-function modalContactClick(event){
+function modalContactClick(event, eventName){
   $('#eventModal').modal('toggle');
+  $('#txtMessage').val('Consulta evento: ' + eventName);
   page.redirect('/contacto');
 }
 
@@ -46,19 +48,18 @@ function searchEvents(e, page){
     },
     async: false,
     success: function(data){
-      var events = JSON.parse(data);
+      passedEvents = JSON.parse(data);
       var cards = '';
       // cards
       $("#events-row").empty();
-      events.list.forEach(event => {
+      passedEvents.list.forEach(event => {
         var card = `
             <div class="col-md-4">
               <div class="card" style="">
               <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
-                <p class="card-text">${event.init_date}</p>
-                <a href="#" class="btn btn-primary">Ver Más</a>
+                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
               </div>
               </div>
             </div>
@@ -74,7 +75,7 @@ function searchEvents(e, page){
             <span class="sr-only">Previous</span>
           </a>
         </li>`;
-      for(var i = 0; i < events.pages; i++){
+      for(var i = 0; i < passedEvents.pages; i++){
         var link = '';
         if(actualEventPage == (i + 1)){
           link = `
@@ -107,6 +108,71 @@ function searchEvents(e, page){
     }
   });
   e.preventDefault();
+  return false;
+}
+
+function showEvent(event, id){
+  var eventSearched = {};
+  var speakers = '';
+  for(var i = 0; i < passedEvents.list.length; i++){
+    if(parseInt(passedEvents.list[i]['id']) == id){
+      eventSearched = passedEvents.list[i];
+    }
+  }
+  for(var i = 0; i < eventSearched.speakers.length; i++){
+    var name = eventSearched.speakers[i].names + eventSearched.speakers[i].last_names;
+    var temp = `
+      <div class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object"  width="100" height="100" src="${REMOTE_URL}${eventSearched.speakers[i].picture_url}" alt="${name}">
+          </a>
+        </div>
+        <div class="media-body">
+          ${name}
+        </div>
+      </div>
+    `;
+    speakers = speakers + temp;
+  }
+  if(speakers != ''){
+    speakers = '<p>Expositores:</p>' + speakers;
+  }
+  var modalContent = `
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">${eventSearched.event_type_name} - ${eventSearched.name}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="card-img-top" src="${REMOTE_URL}${eventSearched.picture_url}" alt="Card image cap">
+            </div>
+            <div class="col-md-6">
+              <p>Fecha de Inicio: ${eventSearched.init_date}</p>
+              <p>Hora de Inicio: ${eventSearched.init_hour}</p>
+              <p>Duración(horas): ${eventSearched.hours}</p>
+              <p>Detalle del Evento: <br> ${eventSearched.description}</p>
+              ${speakers}
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="modalContactClick(event, '${eventSearched.name}')">Contáctanos</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  `;
+  $('#eventModal').empty();
+  $('#eventModal').append(modalContent);
+  $('#eventModal').modal('toggle');
+  // prevent default
+  event.preventDefault();
   return false;
 }
 
