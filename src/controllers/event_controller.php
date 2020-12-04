@@ -31,6 +31,7 @@ class EventController extends \Configs\Controller
       $page = $request->getQueryParam('page');
       $step = $request->getQueryParam('step');
       $date = $request->getQueryParam('date');
+      $event_type_id = $request->getQueryParam('event_type_id');
       if($date == 'past'){
         $date = 'init_date<CURDATE()';
       }else{
@@ -40,7 +41,8 @@ class EventController extends \Configs\Controller
           'specialism_id=' . $specialism_id . '&' .
           'page=' . $page . '&' .
           'step=' . $step . '&' .
-          'query_date=' . $date;
+          'query_date=' . $date . '&' .
+          'event_type_id=' . $event_type_id;
       $rs = \Unirest\Request::get($url);
       $rpta = $rs->{'raw_body'};
     }catch (Exception $e) {

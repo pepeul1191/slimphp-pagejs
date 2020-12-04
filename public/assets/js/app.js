@@ -39,6 +39,7 @@ function searchEvents(e, page){
       page: actualEventPage,
       step: 6,
       date: 'past',
+      event_type_id: $('#sclType').val(),
     },
     headers: {
       //[CSRF_KEY]: CSRF,
@@ -318,7 +319,6 @@ function sendEmail(event){
     $('#txtName').removeClass('input-warning');
   }
   // email
-  console.log(email);
   if(email == ''){
     validationOk = false;
     $('#txtEmail').attr('placeholder', 'Ingrese su correo'); 
