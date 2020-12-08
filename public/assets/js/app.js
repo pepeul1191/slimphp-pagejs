@@ -162,8 +162,10 @@ function showEvent(event, id){
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="modalContactClick(event, '${eventSearched.name}')">Contáctanos</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="modalContactClick(event, '${eventSearched.name}')"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contáctanos</button>
+          <a target="_blank" href="https://api.whatsapp.com/send?phone=51993907419&amp;text=Consulta:%2C%20${eventSearched.name}" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhastApp</a >
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
+          Cerrar</button>
         </div>
       </div>
     </div>
@@ -254,79 +256,65 @@ function showRecentEvents(event, id){
 function loadRecentEvents(){
   $.ajax({
     type: 'GET',
-    url: BASE_URL + 'event/recent-list',
-    data: {},
+    url: BASE_URL + 'event/search',
+    data: {
+      date: 'future',
+      page: 1,
+      step: 6,
+    },
     headers: {
       //[CSRF_KEY]: CSRF,
     },
     async: false,
     success: function(data){
       var events = JSON.parse(data);
-      var html = [];
+      var recentEvents = '';
       var i = 0;
-      recentEvents = events;
-      events.forEach(event => {
-        var card = '';
-        if(i == 0){
-          card = `
-          <div class="carousel-item active">
-            <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">${event.name}</h5>
-                <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
-                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
-              </div>
-              </div>
-            </div>
-          </div>
-          `;
+      console.log(events.list)
+      if(events.list.length > 1){
+        // slider
+        recentEvents = `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">`;
+        events.list.forEach(event => {
+          var item = '';
+          if (i == 0){
+            item =
+              `<div class="carousel-item active">
+                <img class="d-block w-100"  src="${REMOTE_URL}${event.picture_url}" alt="${event.name}">
+              </div>`;
+          }else{
+            item =
+            `<div class="carousel-item">
+              <img class="d-block w-100"  src="${REMOTE_URL}${event.picture_url}" alt="${event.name}">
+            </div>`;
+          }
+          recentEvents = recentEvents + item;
           i++;
-        }else{
-          card = `
-          <div class="carousel-item">
-            <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">${event.name}</h5>
-                <p class="card-text">Fecha de Inicio: ${event.init_date}</p>
-                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
-              </div>
-              </div>
-            </div>
-          </div>
-          `;
-        }
-        $("#events-carousel").append(card);
-        html.card;
-      });
+        });
+        recentEvents = recentEvents +  `
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>`;
+        $('#rowNextEvents').append(recentEvents);
+        console.log(recentEvents)
+        $('.carousel').carousel();
+      }else{
+        // solo imagen
+        events = `<img class="d-block w-100" src="${REMOTE_URL}${events.list[0].picture_url}" alt="${event.name}"></img>`;
+        $('#rowNextEvents').append(events);
+      }
     },
     error: function(xhr, status, error){
       var resp = {};
       console.error(error);
       resp.message = JSON.parse(xhr.responseText);
       resp.status = xhr.status;
-    }
-  });
-  // carousel
-  $('#recipeCarousel').carousel({
-    interval: 3000
-  })
-  $('.carousel .carousel-item').each(function(){
-    var minPerSlide = 3;
-    var next = $(this).next();
-    if (!next.length) {
-    next = $(this).siblings(':first');
-    }
-    next.children(':first-child').clone().appendTo($(this));
-    for (var i=0;i<minPerSlide;i++) {
-      next=next.next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
     }
   });
 }
@@ -504,7 +492,7 @@ $(document).ready(function() {
   loadSpecialisms();
   loadSpeakers();
   // showRecentEvents();
-  // loadRecentEvents();
+  loadRecentEvents();
   router();
   page();
   $("#bthSearch").click();

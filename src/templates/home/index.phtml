@@ -82,8 +82,9 @@
   <h2 class="section-title text-center">Nuestros Cursos y Diplomados</h2>
   <hr class="separator">
   <h3 class="section-subtitle">Nuestro Proximo Evento</h3>
-
-  <h3 class="section-subtitle">Ponemos a su Disposicion Nuestros Cursos y Diplomados de Alta Especialización</h3>
+  <div class="row" id="rowNextEvents">
+  </div>
+  <h3 class="section-subtitle margin-extra-subtitle">Ponemos a su Disposicion Nuestros Cursos y Diplomados de Alta Especialización</h3>
   <div class="row">
     <div class="col-md-12">
       <div class="form-inline" id="rowEventsFilters">
@@ -96,7 +97,10 @@
           <option value="1">Curso</option>
           <option value="2">Diplomado</option>
         </select>            
-        <button class="btn btn-primary" type="button" tabindex="-1" onclick="searchEvents(event)" id="bthSearch">Buscar</button>
+        <button class="btn btn-primary" type="button" tabindex="-1" onclick="searchEvents(event)" id="bthSearch">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          Buscar
+        </button>
       </div>
     </div>
   </div>
@@ -106,21 +110,6 @@
     <div class="col-md-12">
       <nav aria-label="Page navigation example">
         <ul class="pagination pull-right" id="paginationEvents">
-          <!--
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-          -->
         </ul>
       </nav>
     </div>

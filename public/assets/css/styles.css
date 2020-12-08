@@ -7,8 +7,10 @@ p{
 }
 
 .section-subtitle{
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 40px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .section-title{
@@ -66,6 +68,11 @@ section{
     padding-bottom: 26.5px;
     line-height: 27px;
   }
+}
+
+.margin-extra-subtitle{
+  margin-top: 70px;
+  margin-bottom: 50px;
 }
 
 /* video */
@@ -127,14 +134,22 @@ video{/*
 
 /* events */
 
-#events-carousel{
-  margin-bottom: 40px;
-  padding-left: 45px;
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  display: block;
+  height: 400px;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1;
 }
 
 .media-body{
   padding-top: 30px;
   padding-left: 20px;
+}
+
+.btn > i {
+  margin-right: 10px;
 }
 
 .media {
@@ -179,6 +194,7 @@ video{/*
     max-width: 1200px; /* New width for default modal */
   }
 }
+
 /* speakers */
 
 .blockquote-box{border-right:2px solid var(--secondary-color);margin-bottom: 65px; padding-right: 40px;}
