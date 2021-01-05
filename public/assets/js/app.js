@@ -59,7 +59,7 @@ function searchEvents(e, page){
               <img class="card-img-top" src="${REMOTE_URL}${event.picture_url}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">${event.name}</h5>
-                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más</a>
+                <a href="#" class="btn btn-primary" onclick="showEvent(event, ${event.id})">Ver Más - ${event.event_type_name}</a>
               </div>
               </div>
             </div>
@@ -270,7 +270,6 @@ function loadRecentEvents(){
       var events = JSON.parse(data);
       var recentEvents = '';
       var i = 0;
-      console.log(events.list)
       if(events.list.length > 1){
         // slider
         recentEvents = `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
