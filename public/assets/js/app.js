@@ -8,6 +8,14 @@ function modalContactClick(event, eventName){
   page.redirect('/contacto');
 }
 
+function showVideo(event){
+  $('#videoModal').modal('toggle');
+}
+
+$('#videoModal').on('hidden.bs.modal', function () {
+  document.getElementById("legisvideo").pause(); 
+});
+
 function prevEventPage(e){
   if(actualEventPage != 1){
     searchEvents(e, actualEventPage - 1);

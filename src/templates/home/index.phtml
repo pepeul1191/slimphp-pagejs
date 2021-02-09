@@ -1,5 +1,16 @@
 <!-- event modal -->
 <div class="modal" tabindex="-1" role="dialog" id="eventModal"></div>
+<!-- video modal -->
+<div class="modal" tabindex="-1" role="dialog" id="videoModal">
+<div class="modal-body">                   
+  <div class="embed-responsive-item d-flex p-2 justify-content-center">
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" class="embed-responsive-item" controls id="legisvideo"> 
+        <!--<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"></video>-->
+        <source src="<?php echo $constants['static_url'];?>assets/videos/legis-juristas.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</div>
 <!-- nav -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
@@ -30,26 +41,20 @@
     </div>
   </div>
 </nav>
-<!-- Background video -->
-<div class="video-background-holder" id="home">
-  <div class="video-background-overlay"></div>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-      <source src="<?php echo $constants['static_url'];?>assets/videos/legis-juristas.mp4" type="video/mp4">
-    </video>
-  <div class="video-background-content container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
-      <div class="w-100 text-white">
-        <!--
-        <h1 class="display-4">Bootstrap video background</h1>
-        <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>
-        <p class="lead" class="text-white" onclick="showVideo(event)">
-          <u>Ver Video</u>
-        </p>
-        -->
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center text-center">
+      <div class="col-lg-10 align-self-end">
+        <h1 class="text-uppercase text-white font-weight-bold">Legis Juristas Escuela de Derecho</h1>
+        <hr class="divider my-4">
+      </div>
+      <div class="col-lg-8 align-self-baseline">
+        <p class="text-white-75 font-weight-light mb-5">Líderes en formación y desarrollo jurídico</p>
+        <button class="btn btn-primary btn-xl js-scroll-trigger" onclick="showVideo(event)">Ver Video</button>
       </div>
     </div>
   </div>
-</div>
+</header>
 <!-- End -->
 <!-- partners -->
 <section id="partners">
