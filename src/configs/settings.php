@@ -14,11 +14,11 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
-      'base_url' => 'http://localhost:3000/',
-      'static_url' => 'http://localhost:3000/public/',
+      'base_url' => 'http://legisjuristas.com/',
+      'static_url' => 'http://legisjuristas.com/public/',
       'env_static' => 'desarrollo',
-      'remote_url' => 'http://localhost:8080/public/',
-      'service_url' => 'http://localhost:8080/',
+      'remote_url' => 'http://admin.legisjuristas.com/public/',
+      'service_url' => 'http://admin.legisjuristas.com/',
       'validation_csrf' => 'disable',
       'validation_session' => 'able',
       'login' => [

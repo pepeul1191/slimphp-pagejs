@@ -1,4 +1,4 @@
-<?php
+sa<?php
 
 return <<<EOD
 
@@ -396,7 +396,7 @@ return <<<EOD
 				<td style="text-align: left; padding-left: 5px; padding-right: 5px;">
 				<h3 class="heading">Contacto</h3>
 				<ul>
-				<li><span class="text" style="color:#fdfdfd;">Sede Central: Av Juan de Arona 425 San isidro <br>
+				<li><span class="text" style="color:#fdfdfd;">Sede Central: Jiron Mariano de los Santos 109 of. 303, Barranco <br>
 					info@legisjuristas.com</span></li>
 				<li><span class="text" style="color:#fdfdfd">T 997 139 531</span></li>
 				</ul>

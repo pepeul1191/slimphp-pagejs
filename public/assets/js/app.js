@@ -163,7 +163,7 @@ function showEvent(event, id){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" onclick="modalContactClick(event, '${eventSearched.name}')"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contáctanos</button>
-          <a target="_blank" href="https://api.whatsapp.com/send?phone=51993907419&amp;text=Consulta:%2C%20${eventSearched.name}" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhastApp</a >
+          <a target="_blank" href="https://api.whatsapp.com/send?phone=51997139531&amp;text=Consulta:%2C%20${eventSearched.name}" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhastApp</a >
           <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
           Cerrar</button>
         </div>
