@@ -54,7 +54,7 @@ function searchEvents(e, page){
     headers: {
       //[CSRF_KEY]: CSRF,
     },
-    async: false,
+    async: true,
     success: function(data){
       passedEvents = JSON.parse(data);
       var cards = '';
@@ -194,7 +194,7 @@ function loadSpecialisms(){
     headers: {
       //[CSRF_KEY]: CSRF,
     },
-    async: false,
+    async: true,
     success: function(data){
       var specialisms = JSON.parse(data);
       var options = '<option value="E">Todas</option>';
@@ -273,7 +273,7 @@ function loadRecentEvents(){
     headers: {
       //[CSRF_KEY]: CSRF,
     },
-    async: false,
+    async: true,
     success: function(data){
       var events = JSON.parse(data);
       var recentEvents = '';
@@ -336,7 +336,7 @@ function loadSpeakers(){
     headers: {
       //[CSRF_KEY]: CSRF,
     },
-    async: false,
+    async: true,
     success: function(data){
       var speakers = JSON.parse(data);
       var card = '<div class="row">';
@@ -418,7 +418,7 @@ function sendEmail(event){
       headers: {
         [CSRF_KEY]: CSRF,
       },
-      async: false,
+      async: true,
       beforeSend: function(){
         $('#btnContact').attr('disabled', true);
       },
