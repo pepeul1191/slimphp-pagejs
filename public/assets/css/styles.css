@@ -157,6 +157,9 @@ header.masthead {
 
 .text-about{
   padding-top: 50px;
+}
+
+.text-about > p{
   font-size: 22px;
 }
 
