@@ -8,3 +8,4 @@ public/bower_components
 public/dist
 .DS_Store
 *.ods#
+.env

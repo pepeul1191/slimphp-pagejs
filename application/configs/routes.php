@@ -2,13 +2,9 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Controller\DepartamentoController;
-use Controller\DistritoController;
 use Controller\ErrorController;
 use Controller\HomeController;
 use Controller\LoginController;
-use Controller\ProvinciaController;
-use Admin\Controller\ViewController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -24,12 +20,11 @@ $app->post('/login/sign_in', LoginController::class . ':create')->add($mw_sessio
 $app->get('/login/reset', LoginController::class . ':reset')->add($mw_session_false);
 $app->post('/login/reset', LoginController::class . ':resetPassword')->add($mw_session_false);
 $app->post('/login', LoginController::class . ':access');
+$app->get('/oauth/callback', LoginController::class . ':oauth_callback');
 $app->get('/user', LoginController::class . ':user');
-$app->get('/sign_out', LoginController::class . ':signOut');
+$app->get('/sign_out', LoginController::class . ':sign_out');
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home
 $app->get('/', HomeController::class . ':view')->add($mw_session_true);
 //servicios REST
-// access
-$app->get('/access/', \Access\Controller\ViewController::class . ':index');

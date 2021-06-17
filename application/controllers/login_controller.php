@@ -159,7 +159,11 @@ class LoginController extends \Configs\Controller
     return $response->withStatus($status)->write($rpta);
   }
 
-  public function signOut($request, $response, $args){
+  public function oauth_callback($request, $response, $args){
+
+  }
+
+  public function sign_out($request, $response, $args){
     session_destroy();
     return $response->withRedirect($this->constants['base_url'] . 'login');
   }
