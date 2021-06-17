@@ -1,4 +1,4 @@
-<form class="form-signin" action="/login" method="post">
+<form class="form-signin" action="/login/sign_in" method="post">
     <img src="<?php echo $constants['static_url']; ?>assets/img/logo2.png" alt="" width="150" height="150">
     <input type="hidden" name="key" value="value">
     <span class="extraData"></span>
@@ -9,10 +9,10 @@
     <label for="user" class="sr-only">Correo</label>
     <input type="text" id="user" class="form-control" placeholder="Usuario" required="" autofocus="" name="user">
     <!--CSRF -->
-    <input type="hidden" name="<?php echo $constants['csrf']['secret']; ?>" value="<?php echo $constants['csrf']['key']; ?>">
+    <input type="hidden" name="<?php echo $constants['csrf']['key']; ?>" value="<?php echo $constants['csrf']['secret']; ?>">
     <!--PASS -->
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" name="password">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" name="password1">
     <!--PASS 2-->
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" id="inputPassword2" class="form-control" placeholder="Repita su Contraseña" required="" name="password2">

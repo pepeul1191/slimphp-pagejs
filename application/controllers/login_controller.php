@@ -57,7 +57,7 @@ class LoginController extends \Configs\Controller
     $email = $request->getParam('email');
     $message = '';
     if(strpos($email, 'gmail')){
-      $message = 'Para recuperar su acceso a su cuenta de Google, usar el siguiente <a href="https://accounts.google.com/signin/v2/recoveryidentifier">link</a> ';
+      $message = 'Para recuperar su acceso a su cuenta de Google, usar el siguiente <a href="https://accounts.google.com/signin/v2/recoveryidentifier">link</a> que lo llevará a Google';
     }else{
       $message = 'Cuenta no registrada';
     }
@@ -112,7 +112,35 @@ class LoginController extends \Configs\Controller
     }
   }
 
-  public function ver($request, $response, $args){
+  public function create($request, $response, $args){
+    $user = $request->getParam('user');
+    $email = $request->getParam('email');
+    $password1 = $request->getParam('password1');
+    $password2 = $request->getParam('password2');
+    $message = '';
+    $continue = true;
+    if($password1 != $password2){
+      $continue = false;
+      $message = 'Contraseñas no coinciden';
+    }else{
+      // send mail
+      $message = 'Ha ocurrido un error en crear su cuenta. Puede mandarnos un correo presionando <a href="mailto:info@legisjuristas.com">aquí</a> para poder ayudarlo.';
+    }
+    $status = 500;
+    $this->load_helper('login');
+    $locals = [
+      'constants' => $this->constants,
+      'title' => 'Login',
+      'csss' => $this->load_css(index_css($this->constants)),
+      'jss'=> $this->load_js(index_js($this->constants)),
+      'message_color' => 'text-danger',
+      'message' => $message,
+    ];
+    $view = $this->container->view;
+    return $view($response, 'blank', 'login/sign_in.phtml', $locals);
+  }
+
+  public function user($request, $response, $args){
     $rpta = '';
     $status = 200;
     if (array_key_exists('status', $_SESSION)) {
@@ -131,7 +159,7 @@ class LoginController extends \Configs\Controller
     return $response->withStatus($status)->write($rpta);
   }
 
-  public function cerrar($request, $response, $args){
+  public function signOut($request, $response, $args){
     session_destroy();
     return $response->withRedirect($this->constants['base_url'] . 'login');
   }
