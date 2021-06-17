@@ -18,7 +18,7 @@ return [
       'static_url' => 'http://localhost:8090/public/',
       'env_static' => 'desarrollo',
       'validation_csrf' => 'disable',
-      'validation_session' => 'able',
+      'validation_session' => 'disable',
       'login' => [
         'user' => 'admin',
         'password' => 'sistema123'
