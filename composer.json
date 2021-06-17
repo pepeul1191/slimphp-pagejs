@@ -30,11 +30,11 @@
       "classmap": [
         "vendor/j4mie/idiorm/idiorm.php",
         "vendor/j4mie/paris/paris.php",
-        "src/configs/database.php",
-        "src/configs/controller.php",
-        "src/controllers",
-        "src/controllers/access",
-        "src/models"
+        "application/configs/database.php",
+        "application/configs/controller.php",
+        "application/controllers",
+        "application/controllers/access",
+        "application/models"
       ]
     },
     "config": {

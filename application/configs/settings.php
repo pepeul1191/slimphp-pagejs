@@ -14,8 +14,8 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
-      'base_url' => 'http://localhost:3000/',
-      'static_url' => 'http://localhost:3000/public/',
+      'base_url' => 'http://localhost:8090/',
+      'static_url' => 'http://localhost:8090/public/',
       'env_static' => 'desarrollo',
       'validation_csrf' => 'disable',
       'validation_session' => 'able',
