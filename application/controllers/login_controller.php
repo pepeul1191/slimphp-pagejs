@@ -52,6 +52,29 @@ class LoginController extends \Configs\Controller
     return $view($response, 'blank', 'login/reset.phtml', $locals);
   }
 
+  public function resetPassword($request, $response, $args){
+    // https://accounts.google.com/signin/v2/recoveryidentifier
+    $email = $request->getParam('email');
+    $message = '';
+    if(strpos($email, 'gmail')){
+      $message = 'Para recuperar su acceso a su cuenta de Google, usar el siguiente <a href="https://accounts.google.com/signin/v2/recoveryidentifier">link</a> ';
+    }else{
+      $message = 'Cuenta no registrada';
+    }
+    $status = 500;
+    $this->load_helper('login');
+    $locals = [
+      'constants' => $this->constants,
+      'title' => 'Login',
+      'csss' => $this->load_css(index_css($this->constants)),
+      'jss'=> $this->load_js(index_js($this->constants)),
+      'message_color' => 'text-danger',
+      'message' => $message,
+    ];
+    $view = $this->container->view;
+    return $view($response, 'blank', 'login/reset.phtml', $locals);
+  }
+
   public function access($request, $response, $args) {
     $rpta = '';
     $status = 200;

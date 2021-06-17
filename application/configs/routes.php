@@ -21,6 +21,7 @@ $app->get('/demo/[{name}]', function (Request $request, Response $response, arra
 $app->get('/login', LoginController::class . ':index')->add($mw_session_false);
 $app->get('/login/sign_in', LoginController::class . ':signIn')->add($mw_session_false);
 $app->get('/login/reset', LoginController::class . ':reset')->add($mw_session_false);
+$app->post('/login/reset', LoginController::class . ':resetPassword')->add($mw_session_false);
 $app->post('/login', LoginController::class . ':access');
 $app->get('/login/ver', LoginController::class . ':ver');
 $app->get('/login/cerrar', LoginController::class . ':cerrar');

@@ -221,3 +221,8 @@ img{
 h1{
   margin-bottom: 20px;
 }
+
+.message > a {
+  color: red;
+  font-weight: 600;
+}
