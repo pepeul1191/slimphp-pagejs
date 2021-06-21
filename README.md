@@ -38,3 +38,4 @@ Fuentes:
 + https://github.com/slimphp/Slim-Skeleton
 + https://github.com/pepeul1191/php-oauth2-github
 + https://developers.google.com/identity/protocols/oauth2/web-server#uri-validation
++ https://console.cloud.google.com/apis/credentials/

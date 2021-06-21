@@ -14,18 +14,21 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
-      'base_url' => 'http://localhost:8090/',
-      'static_url' => 'http://localhost:8090/public/',
-      'env_static' => 'desarrollo',
-      'validation_csrf' => 'disable',
-      'validation_session' => 'disable',
-      'login' => [
-        'user' => 'admin',
-        'password' => 'sistema123'
-      ],
-      'csrf' => [
-        'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
-        'key' => 'csrf_val'
+      'local' => [
+        'base_url' => 'http://localhost:8090/',
+        'static_url' => 'http://localhost:8090/public/',
+        'redirect_url' => 'http://localhost:8090/oauth/callback?origin=google',
+        'env_static' => 'desarrollo',
+        'validation_csrf' => 'disable',
+        'validation_session' => 'disable',
+        'login' => [
+          'user' => 'admin',
+          'password' => 'sistema123'
+        ],
+        'csrf' => [
+          'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
+          'key' => 'csrf_val'
+        ],
       ],
     ],
   ],

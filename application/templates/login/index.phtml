@@ -16,7 +16,7 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Ingresar
     </button>
-    <a class="btn btn-lg btn-success btn-block" style="margin-top: -14px; margin-bottom: 15px;" href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=1044701093820-jam7g5carn4nghkkhqr75ustq0l5vrum.apps.googleusercontent.com&redirect_uri=<?php echo $constants['base_url']; ?>oauth/callback?origin=google&scope=profile email">
+    <a class="btn btn-lg btn-success btn-block" style="margin-top: -14px; margin-bottom: 15px;" href="https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=<?php echo $oauth_client_id; ?>&redirect_uri=<?php echo $constants['base_url'] . $oauth_callback; ?>">
       <i class="fa fa-google" aria-hidden="true"></i>
       Ingresar con Google
     </a>
