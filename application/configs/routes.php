@@ -5,6 +5,8 @@ use Slim\Http\Response;
 use Controller\ErrorController;
 use Controller\HomeController;
 use Controller\LoginController;
+use Controller\UserController;
+use Controller\OAuthController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -20,9 +22,10 @@ $app->post('/login/sign_in', LoginController::class . ':create')->add($mw_sessio
 $app->get('/login/reset', LoginController::class . ':reset')->add($mw_session_false);
 $app->post('/login/reset', LoginController::class . ':resetPassword')->add($mw_session_false);
 $app->post('/login', LoginController::class . ':access');
-$app->get('/oauth/callback', LoginController::class . ':oauth_callback');
-$app->get('/user', LoginController::class . ':user');
-$app->get('/sign_out', LoginController::class . ':sign_out');
+$app->get('/oauth/callback', OAuthController::class . ':googleCallback');
+$app->get('/user', UserController::class . ':view');
+$app->get('/exit', UserController::class . ':exit');
+$app->get('/sign_out', UserController::class . ':sign_out');
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home
