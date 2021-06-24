@@ -9,51 +9,58 @@
   <script type="text/javascript">
     var BASE_URL = '<?php echo $constants['base_url'];?>';
     var STATICS_URL  = '<?php echo $constants['static_url'];?>';
-    var MODULOS_JSON = JSON.parse('<?php echo $menu; ?>');
-    var ITEMS_JSON = JSON.parse('<?php echo $items; ?>');
-    var DATA = JSON.parse('<?php echo $data; ?>');
     var CSRF = "<?php echo $constants['csrf']['secret']; ?>";
     var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
   </script>
 </head>
 <body>
-  <label id="defaultTargetMensajes"></label>
-  <!-- Inicio modal -->
-  <button type="button" class="btn btn-primary btn-lg oculto" data-toggle="modal" data-target="#modal-container" data-backdrop="static"  data-backdrop="static" id="btnModal">Launch demo modal</button>
-  <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#modal" id="btnModal">
+      Launch demo modal
+    </button>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     </div>
-  </div>
-  <!-- Fin modal -->
-  <div id="app">
-    <header>
-      <a href="<%= CONSTANTS[:base_url] %>">Inicio</a>
-      <a href="<%= CONSTANTS[:base_url] %>ayuda">Ayuda</a>
-      <a href="/user" class="pull-right">Pepe Valdivia</a>
-      <a href="/exit" class="pull-right">Cerrar Sesión</a>
+    <!-- Header -->
+    <header class="bg-primary fixed-top" id="nav1">
+      <ul class="">
+        <li class="">
+          <a class="" href="/">Home</a>
+        </li>
+        <li class="">
+          <a class="" href="/help">Ayuda</a>
+        </li>
+      </ul>
+      <ul class="pull-right" style="float: right !important;">
+        <li class="">
+          Hola 
+          <a class="" href="/user"><?php echo $_SESSION['student_names']; ?></a>
+        </li>
+        <li class="">
+          <a class="" href="<?php echo $_SESSION['logout_url']; ?>">Salir</a>
+        </li>
+      </ul>
     </header>
-    <nav>
-      <h1><i class="fa fa-futbol-o h1" aria-hidden="true"></i>Administración de Canchas</h1>
-      <?php echo $modules; ?>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top" id="nav2">
+      <a class="navbar-brand" href="/">
+        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        Legis Juristas
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="burgerMenuButton">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <!--
+            <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          -->
+          <li class="nav-item">
+            <a class="nav-link" href="/courses">Mis Cursos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/edit" onclick="return false;">Mis Datos</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <div id="body-app" class="row">
-      <aside class="col-md-2">
-        <?php echo $items; ?>
-      </aside>
-      <section class="col-md-10" id="workspace">
-        <!-- Inicio Yield-->
