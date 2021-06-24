@@ -56,6 +56,12 @@ if ( ! function_exists('index_message'))
         break;
       case 'error-auth':
         $resp = [
+          'message' => 'Ocurrió un error en validar sus credenciales en el sistema',
+          'color-message' => 'text-danger',
+        ];
+        break;
+      case 'error-auth-access':
+        $resp = [
           'message' => 'Usted no está registrado en el sistema',
           'color-message' => 'text-danger',
         ];

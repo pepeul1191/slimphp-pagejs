@@ -16,7 +16,7 @@ class OAuthController extends \Configs\Controller
       'client_secret' => $this->env['OAUTH_SECRET'],
       'code' => $code,
       'grant_type' => 'authorization_code',
-      'redirect_uri' => $this->constants['redirect_url'],
+      'redirect_uri' => $this->constants['redirect_url']['google'],
     );
     $response_oauth = Request::post($url, $headers, $params);
     if($response_oauth->code == 200){
@@ -32,11 +32,14 @@ class OAuthController extends \Configs\Controller
       if($response_oauth->code == 200){
         $response_oauth = json_decode($response_oauth->raw_body);
         // validate if email is registered in 'admin' system
-        $url = 'http://localhost:8080/api/student/check';
-        $headers = array();
+        $url = $this->constants['admin']['url'] . 'api/student/check';
+        $headers = array(
+          $this->constants['admin']['key'] => $this->constants['admin']['value'],
+        );
         $params = array(
           'email' => $response_oauth->email,
         );
+        //var_dump($headers);var_dump($params);exit();
         $response_admin = Request::get($url, $headers, $params);
         if($response_admin->code == 200){
           $response_admin = json_decode($response_admin->raw_body);
@@ -54,6 +57,9 @@ class OAuthController extends \Configs\Controller
           $_SESSION['logout_url'] = 'https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=' . $this->constants['base_url'] . 'sign_out';
           header('Location: ' . $this->constants['base_url']);
           exit();
+        }elseif($response_admin->code == 501){
+          header('Location: ' . $this->constants['base_url'] . 'login?message=error-auth-access');
+          exit(); 
         }else{
           header('Location: ' . $this->constants['base_url'] . 'login?message=error-auth');
           exit();  
