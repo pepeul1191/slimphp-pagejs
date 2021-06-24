@@ -31,6 +31,7 @@ a {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 75px;
+  padding-bottom: 20px;
   background: #FFF;
   box-shadow: 1px 1px 5px #999;
 }
@@ -102,4 +103,9 @@ footer > a {
 
 .btn > i {
   margin-right: 5px;
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
 }

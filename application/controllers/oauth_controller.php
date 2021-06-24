@@ -46,7 +46,7 @@ class OAuthController extends \Configs\Controller
           $_SESSION['student_id'] = $response_admin->id;
           $_SESSION['student_names'] = $response_admin->names;
           $_SESSION['student_last_names'] = $response_admin->last_names;
-          $_SESSION['user_data'] = $response_oauth;
+          # $_SESSION['user_data'] = $response_oauth;
           $_SESSION['access_token'] = $access_token;
           $_SESSION['user_nick'] = $response_oauth->name;
           $_SESSION['user_name'] = $response_oauth->name;

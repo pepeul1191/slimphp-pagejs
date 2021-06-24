@@ -7,6 +7,7 @@ use Controller\HomeController;
 use Controller\LoginController;
 use Controller\UserController;
 use Controller\OAuthController;
+use Controller\EventController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -26,6 +27,10 @@ $app->get('/oauth/callback', OAuthController::class . ':googleCallback');
 $app->get('/user', UserController::class . ':view');
 $app->get('/exit', UserController::class . ':exit');
 $app->get('/sign_out', UserController::class . ':sign_out');
+//app
+$app->get('/event/list', EventController::class . ':list');
+$app->get('/event/document', EventController::class . ':studentDocuments');
+$app->get('/event/video', EventController::class . ':studentVideos');
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home
