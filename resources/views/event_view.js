@@ -5,7 +5,7 @@ import EventCollection from '../collections/event_collection';
 var EventView = Backbone.View.extend({
   el: '#workspace',
 	initialize: function(){
-    this.events = new EventCollection();
+    this.events_ = new EventCollection();
 	},
 	events: {
     // form
@@ -28,14 +28,14 @@ var EventView = Backbone.View.extend({
           description: event.description,
           url: event.picture_url,
         });
-        this.events.add(n);
+        this.events_.add(n);
       });
     }
   },
   render: function(){
     var data = {
       STATIC_URL: STATIC_URL,
-      events: this.events,
+      events: this.events_,
     };
     var templateCompiled = null;
 		$.ajax({

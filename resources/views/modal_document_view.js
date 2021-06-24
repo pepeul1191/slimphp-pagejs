@@ -1,12 +1,22 @@
+import EventDocumentService from '../services/event_document_service';
+import Document from '../models/document';
+import DocumentCollection from '../collections/document_collection';
+
 var ModalDocumentView = Backbone.View.extend({
   el: '#modal',
   event_id: null,
 	initialize: function(event_id){
     this.event_id = event_id;
+    this.documents = new DocumentCollection();
   },
 	events: {
   },
-  render: function(data, type){
+  render: function(event_id){
+    var data = {
+      STATIC_URL: STATIC_URL,
+      documents: this.documents,
+    };
+    console.log(data)
 		var templateCompiled = null;
 		$.ajax({
 		  url: STATIC_URL + 'templates/modal_document.html',
@@ -25,8 +35,23 @@ var ModalDocumentView = Backbone.View.extend({
     this.$el.html(templateCompiled);
     this.$el.modal('toggle');
   },
-  loadComponents: function(){
-
+  loadComponents: function(event_id){
+    this.event_id = event_id;
+    console.log(event_id)
+    var resp = EventDocumentService.list(event_id);
+    if(resp.status == 200){
+      var documents = resp.message;
+      documents.forEach(document => {
+        var n = new Document({
+          id: document.id,
+          name: document.name,
+          description: document.description,
+          url: document.picture_url,
+        });
+        console.log(n)
+        this.documents.add(n);
+      });
+    }
   },
 });
 
