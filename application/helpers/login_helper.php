@@ -48,9 +48,15 @@ if ( ! function_exists('index_message'))
   function index_message($type){
     $resp = null;
     switch($type){
-      case 'error-ouath':
+      case 'error-oauth':
         $resp = [
           'message' => 'Ocurrió un error en iniciar su sesión',
+          'color-message' => 'text-danger',
+        ];
+        break;
+      case 'error-auth':
+        $resp = [
+          'message' => 'Usted no está registrado en el sistema',
           'color-message' => 'text-danger',
         ];
         break;

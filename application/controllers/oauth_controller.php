@@ -31,19 +31,35 @@ class OAuthController extends \Configs\Controller
       $response_oauth = Request::get($url, $headers, $params);
       if($response_oauth->code == 200){
         $response_oauth = json_decode($response_oauth->raw_body);
-        $_SESSION['user_data'] = $response_oauth;
-        $_SESSION['access_token'] = $access_token;
-        $_SESSION['user_nick'] = $response_oauth->name;
-        $_SESSION['user_name'] = $response_oauth->name;
-        $_SESSION['user_img'] = $response_oauth->picture;
-        $_SESSION['user_email'] = $response_oauth->email;
-        $_SESSION['status'] = 'active';
-        $_SESSION['app'] = 'Google';
-        $_SESSION['logout_url'] = 'https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=' . $this->constants['base_url'] . 'sign_out';
-        header('Location: ' . $this->constants['base_url']);
-        exit();
+        // validate if email is registered in 'admin' system
+        $url = 'http://localhost:8080/api/student/check';
+        $headers = array();
+        $params = array(
+          'email' => $response_oauth->email,
+        );
+        $response_admin = Request::get($url, $headers, $params);
+        if($response_admin->code == 200){
+          $response_admin = json_decode($response_admin->raw_body);
+          $_SESSION['student_id'] = $response_admin->id;
+          $_SESSION['student_names'] = $response_admin->names;
+          $_SESSION['student_last_names'] = $response_admin->last_names;
+          $_SESSION['user_data'] = $response_oauth;
+          $_SESSION['access_token'] = $access_token;
+          $_SESSION['user_nick'] = $response_oauth->name;
+          $_SESSION['user_name'] = $response_oauth->name;
+          $_SESSION['user_img'] = $response_oauth->picture;
+          $_SESSION['user_email'] = $response_oauth->email;
+          $_SESSION['status'] = 'active';
+          $_SESSION['app'] = 'Google';
+          $_SESSION['logout_url'] = 'https://accounts.google.com/Logout?continue=https://appengine.google.com/_ah/logout?continue=' . $this->constants['base_url'] . 'sign_out';
+          header('Location: ' . $this->constants['base_url']);
+          exit();
+        }else{
+          header('Location: ' . $this->constants['base_url'] . 'login?message=error-auth');
+          exit();  
+        }
       }else{
-        header('Location: ' . $this->constants['base_url'] . 'login?message=error-ouath');
+        header('Location: ' . $this->constants['base_url'] . 'login?message=error-oauth');
         exit();  
       }
       
