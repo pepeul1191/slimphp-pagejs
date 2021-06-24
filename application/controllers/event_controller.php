@@ -8,7 +8,6 @@ class EventController extends \Configs\Controller
 {
   public function list($request, $response, $args){
     // params
-    $event_id = $request->getParam('event_id');
     $student_id = $_SESSION['student_id'];
     // unirest
     $url = $this->constants['admin']['url'] . 'api/event/student';
@@ -17,7 +16,6 @@ class EventController extends \Configs\Controller
     );
     $params = array(
       'student_id' => $student_id,
-      'event_id' => $event_id,
     );
     $response_admin = Request::get($url, $headers, $params);
     // response
