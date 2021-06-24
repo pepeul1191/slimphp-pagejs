@@ -27,11 +27,10 @@ a {
 }
 
 #workspace{
-  padding: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 10px 30px 20px 30px;
+  /*margin-left: 20px;
+  margin-right: 20px;*/
   margin-top: 75px;
-  padding-bottom: 20px;
   background: #FFF;
   box-shadow: 1px 1px 5px #999;
 }
@@ -68,26 +67,26 @@ footer > a {
   padding-right: 30px;
 }
 
-#nav1 > ul > li{
+#nav1 > .container > ul > li{
   display: inline;
 }
 
-#nav1 > ul > li > a{
+#nav1 > .container > ul > li > a{
   color: #fdfdfd;
   font-weight: 400;
 }
 
-#nav1 > ul > li > a:hover{
+#nav1 > .container > ul > li > a:hover{
   color: #FFF;
   text-decoration: none;
   font-weight: 600;
 }
 
-#nav1 > ul > li:first-child {
+#nav1 > .container > ul > li:first-child {
   margin-right: 15px;
 }
 
-#nav1 > ul {
+#nav1 > .container > ul {
   position: relative;
   float: left;
   margin-top: 2px;

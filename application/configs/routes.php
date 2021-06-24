@@ -35,4 +35,6 @@ $app->get('/event/video', EventController::class . ':studentVideos');
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home
 $app->get('/', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/courses', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/user/edit', HomeController::class . ':view')->add($mw_session_true);
 //servicios REST

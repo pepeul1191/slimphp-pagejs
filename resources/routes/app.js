@@ -1,14 +1,20 @@
 import 'bootstrap/dist/js/bootstrap.min.js';
 import EventView from '../views/event_view';
+import ModalDocumentView from '../views/modal_document_view';
+import ModalVideoView from '../views/modal_video_view';
 
 // views
 var eventView = null;
-var videoView = null;
-var docuemntView = null;
+var modalDocumentView = null;
+var modalVideoView = null;
 // routes
 page.base('/');
 page('', courses);
 page('courses', courses);
+page('user/edit', user);
+page('video/:event_id', videoModal);
+page('document/:event_id', documentModal);
+page('*', notfound)
 page();
 
 function courses(ctx, next) {
@@ -17,5 +23,40 @@ function courses(ctx, next) {
   }
   eventView.loadComponents();
   eventView.render();
-  next();
+  //next();
 }
+
+function user(ctx, next){
+  alert('user');
+}
+
+function documentModal(ctx, next){
+  var event_id = ctx.params.event_id;
+  if(modalDocumentView == null){
+    modalDocumentView = new ModalDocumentView();
+  }
+  modalDocumentView.render(event_id);
+  modalDocumentView.loadComponents();
+}
+
+function videoModal(ctx, next){
+  var event_id = ctx.params.event_id;
+  if(modalVideoView == null){
+    modalVideoView = new ModalVideoView();
+  }
+  modalVideoView.render(event_id);
+  modalVideoView.loadComponents();
+}
+
+function notfound(ctx, next) {
+  //window.location = BASE_URL + 'error/access/404';
+}
+
+$('#modal').on('hidden.bs.modal', function (e) {
+  if (
+    window.location.href.includes('document') ||
+    window.location.href.includes('video')
+  ){
+    page.redirect('/');
+  }
+});
