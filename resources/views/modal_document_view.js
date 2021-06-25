@@ -11,7 +11,7 @@ var ModalDocumentView = Backbone.View.extend({
   },
 	events: {
   },
-  render: function(event_id){
+  render: function(){
     var data = {
       STATIC_URL: STATIC_URL,
       documents: this.documents,
@@ -37,7 +37,6 @@ var ModalDocumentView = Backbone.View.extend({
   },
   loadComponents: function(event_id){
     this.event_id = event_id;
-    console.log(event_id)
     var resp = EventDocumentService.list(event_id);
     if(resp.status == 200){
       var documents = resp.message;
@@ -48,7 +47,6 @@ var ModalDocumentView = Backbone.View.extend({
           description: document.description,
           url: document.picture_url,
         });
-        console.log(n)
         this.documents.add(n);
       });
     }

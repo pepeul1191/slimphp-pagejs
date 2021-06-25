@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-lg" role="document">
+<div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title" id="exampleModalLabel">Documentos del Evento</h5>
@@ -8,16 +8,10 @@
     </div>
     <div class="modal-body">
       <div class="row">
-        <div class="col-md-12">
-          <div class="alert" id="messageModal" role="alert"></div>
-        </div>
         <% documents.each(function(document) { %>
           <div class="col-12 mt-3">
             <div class="card">
               <div class="card-horizontal">
-                <div class="img-square-wrapper">
-                  <img class="" src="http://localhost:8080/public/<%= document.get('url') %>" alt="<%= document.get('name') %>" height="180" width="300">
-                </div>
                 <div class="card-body">
                   <h4 class="card-title"><%= document.get('name') %></h4>
                   <p class="card-text"><%= document.get('description') %></p>

@@ -44,8 +44,8 @@ function videoModal(ctx, next){
   if(modalVideoView == null){
     modalVideoView = new ModalVideoView();
   }
-  modalVideoView.render(event_id);
-  modalVideoView.loadComponents();
+  modalVideoView.loadComponents(event_id);
+  modalVideoView.render();
 }
 
 function notfound(ctx, next) {
