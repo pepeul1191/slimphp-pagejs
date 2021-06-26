@@ -108,3 +108,10 @@ footer > a {
   display: flex;
   flex: 1 1 auto;
 }
+
+h4 > .fa-frown-o{
+  font-size: 40px;
+  top: -12px;
+  position: relative;
+  float: left;
+}
