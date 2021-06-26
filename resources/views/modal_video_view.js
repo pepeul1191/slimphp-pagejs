@@ -47,7 +47,7 @@ var ModalVideoView = Backbone.View.extend({
           id: video.id,
           name: video.name,
           description: video.description,
-          url: video.picture_url,
+          url: video.url,
         });
         this.videos.add(n);
       });
