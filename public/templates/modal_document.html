@@ -11,18 +11,17 @@
         <% documents.each(function(document) { %>
           <div class="col-12 mt-3">
             <div class="card">
-              <div class="card-horizontal">
-                <div class="card-body">
-                  <h4 class="card-title"><%= document.get('name') %></h4>
+              <div class="card-body row">
+                <div class="col-md-8">
+                  <h5 class="card-title"><%= document.get('name') %></h5>
                   <p class="card-text"><%= document.get('description') %></p>
+                </div>
+                <div class="col-md-4">
                   <div class="form-group">
-                    <a class="btn btn-info pull-left" style="margin-top: 12px;" href="/video/<%= document.get('id') %>">
-                      <i class="fa fa-video-camera" style="margin-right:5px"></i>
-                      Videos del Curso
+                    <a class="btn btn-info pull-left" style="margin-top: 12px;" href="/document/<%= document.get('id') %>">
+                      <i class="fa fa-download" style="margin-right:5px"></i>
+                      Descargar
                     </a>
-                  </div>
-                  <div class="form-group">
-                    <a class="btn btn-secondary pull-left" style="margin-top: 12px; margin-left: 20px;" href="/document/<%= document.get('id') %>"> <i class="fa fa-book" style="margin-right:5px"></i>Materiales del Curso</a>
                   </div>
                 </div>
               </div>

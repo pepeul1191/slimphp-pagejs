@@ -37,4 +37,8 @@ $app->get('/error/access/{numero}', ErrorController::class . ':access');
 $app->get('/', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/courses', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/user/edit', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/document', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/video', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/document/{id}', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/video/{id}', HomeController::class . ':view')->add($mw_session_true);
 //servicios REST

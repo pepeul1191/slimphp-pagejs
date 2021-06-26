@@ -35,6 +35,9 @@ var ModalVideoView = Backbone.View.extend({
     this.$el.modal('toggle');
   },
   loadComponents: function(event_id){
+    // clear collection
+    this.videos.reset();
+    // show data
     this.event_id = event_id;
     var resp = EventVideoService.list(event_id);
     if(resp.status == 200){

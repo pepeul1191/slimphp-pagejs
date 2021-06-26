@@ -36,6 +36,9 @@ var ModalDocumentView = Backbone.View.extend({
     this.$el.modal('toggle');
   },
   loadComponents: function(event_id){
+    // clear collection
+    this.documents.reset();
+    // show data
     this.event_id = event_id;
     var resp = EventDocumentService.list(event_id);
     if(resp.status == 200){

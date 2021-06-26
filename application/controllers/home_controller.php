@@ -10,7 +10,7 @@ class HomeController extends \Configs\Controller
     $status = 200;
     $locals = [
       'constants' => $this->constants,
-      'title' => 'Admin',
+      'title' => 'Aula Virtual',
       'csss' => $this->load_css(index_css($this->constants)),
       'jss'=> $this->load_js(index_js($this->constants)),
     ];
