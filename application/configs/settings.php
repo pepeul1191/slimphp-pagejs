@@ -29,6 +29,7 @@ return [
         ],
         'admin' => [
           'url' => 'http://localhost:8080/',
+          'static_url' => 'http://localhost:8080/public/',
           'key' => 'api-key',
           'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
         ],

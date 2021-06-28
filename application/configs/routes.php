@@ -8,6 +8,7 @@ use Controller\LoginController;
 use Controller\UserController;
 use Controller\OAuthController;
 use Controller\EventController;
+use Controller\DocumentController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -31,6 +32,7 @@ $app->get('/sign_out', UserController::class . ':sign_out');
 $app->get('/event/list', EventController::class . ':list');
 $app->get('/event/document', EventController::class . ':studentDocuments');
 $app->get('/event/video', EventController::class . ':studentVideos');
+$app->get('/document/get', DocumentController::class . ':get')->add($mw_session_true);
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home

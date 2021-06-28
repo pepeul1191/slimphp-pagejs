@@ -10,6 +10,7 @@ var ModalDocumentView = Backbone.View.extend({
     this.documents = new DocumentCollection();
   },
 	events: {
+    'click button.btn-document': 'getDocument',
   },
   render: function(){
     var data = {
@@ -48,11 +49,18 @@ var ModalDocumentView = Backbone.View.extend({
           id: document.id,
           name: document.name,
           description: document.description,
-          url: document.picture_url,
+          // url: document.picture_url,
+          event_id: event_id,
         });
         this.documents.add(n);
       });
     }
+  },
+  getDocument: function(event){
+    var document_id = event.target.getAttribute('document-id');
+    var event_id = event.target.getAttribute('event-id');
+    var document_name = this.documents.get(document_id).get('name');
+    EventDocumentService.get(event_id, document_id, document_name);
   },
 });
 
