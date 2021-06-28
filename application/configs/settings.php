@@ -22,7 +22,7 @@ return [
         ],
         'env_static' => 'desarrollo',
         'validation_csrf' => 'disable',
-        'validation_session' => 'disable',
+        'validation_session' => 'able',
         'login' => [
           'user' => 'admin',
           'password' => 'sistema123'

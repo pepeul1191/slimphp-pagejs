@@ -9,6 +9,7 @@ class UserController extends \Configs\Controller
   public function view($request, $response, $args){
     $rpta = '';
     $status = 200;
+    var_dump($_SESSION);
     if (array_key_exists('status', $_SESSION)) {
       if($_SESSION['status'] != 'active'){
         $rpta = '<h1>El usuario no se encuentra logueado</h1>';

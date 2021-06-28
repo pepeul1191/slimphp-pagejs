@@ -1,11 +1,17 @@
 <?php
 // Application middleware
 
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__. '/../..');
+$env = $dotenv->load();
+
 // e.g: $app->add(new \Slim\Csrf\Guard);
 $mw_ambiente_csrf = function ($request, $response, $next) {
   $settings = require 'settings.php';
   $continuar = true;
-  if($settings['settings']['constants']['validation_csrf'] == 'able'){
+  $env = $_ENV['ENV'];
+  if($settings['settings']['constants'][$env]['validation_csrf'] == 'able'){
     if($request->getHeader($settings['settings']['constants']['csrf']['key'])[0] != $settings['settings']['constants']['csrf']['secret']){
       $continuar = false;
     }
@@ -31,7 +37,8 @@ $mw_ambiente_csrf = function ($request, $response, $next) {
 $mw_session_true = function ($request, $response, $next) {
   $settings = require 'settings.php';
   $continuar = true;
-  if($settings['settings']['constants']['validation_session'] == 'able'){
+  $env = $_ENV['ENV'];
+  if($settings['settings']['constants'][$env]['validation_session'] == 'able'){
     if (array_key_exists('status', $_SESSION)) {
       if($_SESSION['status'] != 'active'){
         $continuar = false;

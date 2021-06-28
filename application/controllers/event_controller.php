@@ -6,7 +6,8 @@ use Unirest\Request;
 
 class EventController extends \Configs\Controller
 {
-  public function list($request, $response, $args){
+  public function list($request, $response, $args)
+  {
     // params
     $student_id = $_SESSION['student_id'];
     // unirest
@@ -30,7 +31,8 @@ class EventController extends \Configs\Controller
     return $response->withStatus($status)->write($resp);
   }
 
-  public function studentDocuments($request, $response, $args){
+  public function studentDocuments($request, $response, $args)
+  {
     // params
     $event_id = $request->getParam('event_id');
     $student_id = $_SESSION['student_id'];
@@ -56,7 +58,8 @@ class EventController extends \Configs\Controller
     return $response->withStatus($status)->write($resp);
   }
 
-  public function studentVideos($request, $response, $args){
+  public function studentVideos($request, $response, $args)
+  {
     // params
     $event_id = $request->getParam('event_id');
     $student_id = $_SESSION['student_id'];
