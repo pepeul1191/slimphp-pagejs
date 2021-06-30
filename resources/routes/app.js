@@ -2,11 +2,13 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import EventView from '../views/event_view';
 import ModalDocumentView from '../views/modal_document_view';
 import ModalVideoView from '../views/modal_video_view';
+import UserView from '../views/user_view';
 
 // views
 var eventView = null;
 var modalDocumentView = null;
 var modalVideoView = null;
+var userView = null;
 // routes
 page.base('/');
 page('', courses);
@@ -27,7 +29,11 @@ function courses(ctx, next) {
 }
 
 function user(ctx, next){
-  alert('user');
+  if(userView == null){
+    userView = new UserView();
+  }
+  userView.loadComponents();
+  userView.render();
 }
 
 function documentModal(ctx, next){

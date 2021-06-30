@@ -40,11 +40,19 @@ var EventDocumentService = {
       },
       async: true,
       success: function(data){
-        //resp.message = JSON.parse(data);
+        // get extension
+        var extensions = {
+          'application/pdf':  'pdf',
+          'application/msword':  'doc',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document':  'docx',
+          'application/vnd.ms-powerpoint':  'ppt',
+          'application/vnd.openxmlformats-officedocument.presentationml.presentation':  'pptx',
+        };
+        // download
         var a = document.createElement('a');
         var url = window.URL.createObjectURL(data);
         a.href = url;
-        a.download = document_name + '.pdf';
+        a.download = document_name + '.' + extensions[data.type];
         document.body.append(a);
         a.click();
         a.remove();

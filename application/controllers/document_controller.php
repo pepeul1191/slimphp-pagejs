@@ -28,6 +28,8 @@ class DocumentController extends \Configs\Controller
       $status = 404;
       $resp = 'no existe el documento';
     }else{
+      $this->load_helper('document');
+      $extension = get_type_extension($response_admin->body);
       // unirest get document
       $document_url = $response_admin->body;
       $url = $this->constants['admin']['static_url'] . $document_url;
@@ -36,7 +38,7 @@ class DocumentController extends \Configs\Controller
       );
       $params = array();
       $response_admin = Request::get($url, $headers, $params);
-      $response = $response->withHeader('Content-Type', 'application/pdf');
+      $response = $response->withHeader('Content-Type', $extension);
       $resp = $response_admin->body;
     }
     // response
