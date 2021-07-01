@@ -33,6 +33,9 @@ return [
           'key' => 'api-key',
           'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
         ],
+        'web' => [
+          'url' => 'http://legisjuristas.com/',
+        ],
         'csrf' => [
           'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
           'key' => 'csrf_val'

@@ -1,0 +1,47 @@
+<% var eventSearched = events.get(event_id); %>
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"><%= eventSearched.get('event_type_name') %> - <%= eventSearched.get('name') %></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img class="card-img-top" src="<%= REMOTE_URL + eventSearched.get('url') %>" alt="Card image cap">
+        </div>
+        <div class="col-md-6">
+          <p>Fecha de Inicio: <%= eventSearched.get('init_date') %></p>
+          <% if(eventSearched.get('init_hour') !== undefined) { %> 
+          <p>Hora de Inicio: <%= eventSearched.get('init_hour') %></p>
+          <% } %>
+          <% if(eventSearched.get('hours') !== undefined) { %> 
+          <p>Duración(horas): <%= eventSearched.get('hours') %></p>
+          <% } %>
+          <p>Detalle del Evento: <br> <%= eventSearched.get('description') %></p>
+          <% for(var i = 0; i < eventSearched.speakers.models.length; i++){ %>
+            <% var name = eventSearched.speakers.models[i].get('names') + eventSearched.speakers.models[i].get('last_names'); %>
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object"  width="100" height="100" src="<%= REMOTE_URL + eventSearched.speakers.models[i].get('url') %>" alt="<%= name %>">
+                </a>
+              </div>
+              <div class="media-body">
+                <%= name %>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="mailto:info@legisjuristas.com?Subject=Consulta - %20<%= eventSearched.get('name') %>"" class="btn btn-primary"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contáctanos</a >
+      <a target="_blank" href="https://api.whatsapp.com/send?phone=51997139531&amp;text=Consulta:%2C%20<%= eventSearched.get('name') %>" class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"></i> WhastApp</a >
+      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>
+      Cerrar</button>
+    </div>
+  </div>
+</div>

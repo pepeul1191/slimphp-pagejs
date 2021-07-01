@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-12 mt-3">
+    <h4 style="margin-bottom: 20px;">Próximos Cursos</h4>
+  </div>
+</div>
+<div class="row">
+  <% events.each(function(event) { %>
+  <div class="col-md-4">
+    <div class="card" style="">
+      <img class="card-img-top" src="<%= REMOTE_URL + event.get('url') %>" alt="<%= event.get('name') %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= event.get('name') %></h5>
+        <button class="btn btn-primary btn-recent-event" event-id="<%= event.get('id') %>">Ver Más - <%= event.get('event_type_name') %></button>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>

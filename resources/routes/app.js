@@ -13,6 +13,7 @@ var userView = null;
 page.base('/');
 page('', courses);
 page('courses', courses);
+page('events', events);
 page('user/edit', user);
 page('video/:event_id', videoModal);
 page('document/:event_id', documentModal);
@@ -24,7 +25,16 @@ function courses(ctx, next) {
     eventView = new EventView();
   }
   eventView.loadComponents();
-  eventView.render();
+  eventView.render('event');
+  //next();
+}
+
+function events(ctx, next) {
+  if(eventView == null){
+    eventView = new EventView();
+  }
+  eventView.loadComponentsRecent();
+  eventView.render('recent');
   //next();
 }
 

@@ -9,7 +9,7 @@
     <div class="card">
       <div class="card-horizontal">
         <div class="img-square-wrapper">
-          <img class="" src="http://localhost:8080/public/<%= event.get('url') %>" alt="<%= event.get('name') %>" height="180" width="300">
+          <img class="" src="<%= REMOTE_URL + event.get('url') %>" alt="<%= event.get('name') %>" height="180" width="300">
         </div>
         <div class="card-body">
           <h4 class="card-title"><%= event.get('name') %></h4>

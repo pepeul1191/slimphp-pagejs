@@ -9,6 +9,8 @@
   <script type="text/javascript">
     var BASE_URL = '<?php echo $constants['base_url'];?>';
     var STATIC_URL  = '<?php echo $constants['static_url'];?>';
+    var REMOTE_URL  = '<?php echo $constants['admin']['static_url'];?>';
+    var WEB_URL  = '<?php echo $constants['web']['url'];?>';
     var CSRF = "<?php echo $constants['csrf']['secret']; ?>";
     var CSRF_KEY = '<?php echo $constants['csrf']['key']; ?>';
   </script>
@@ -33,8 +35,8 @@
       </ul>
       <ul class="pull-right" style="float: right !important;">
         <li class="">
-          Hola 
-          <a class="" href="/user"><?php echo $_SESSION['student_names']; ?></a>
+          Bienvenido  
+          <a class="" href="/user/edit"><?php echo $_SESSION['student_names']; ?></a>
         </li>
         <li class="">
           <a class="" href="<?php echo $_SESSION['logout_url']; ?>">Salir</a>
@@ -62,7 +64,7 @@
             <a class="nav-link" href="/courses">Mis Cursos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/edit">Mis Datos</a>
+            <a class="nav-link" href="/events">Proximos Eventos</a>
           </li>
         </ul>
       </div>

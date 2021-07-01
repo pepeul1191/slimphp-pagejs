@@ -30,6 +30,7 @@ $app->get('/exit', UserController::class . ':exit');
 $app->get('/sign_out', UserController::class . ':sign_out');
 //app
 $app->get('/event/list', EventController::class . ':list');
+$app->get('/event/recent', EventController::class . ':recentList');
 $app->get('/event/document', EventController::class . ':studentDocuments');
 $app->get('/event/video', EventController::class . ':studentVideos');
 $app->get('/document/get', DocumentController::class . ':get')->add($mw_session_true);
@@ -40,6 +41,7 @@ $app->get('/', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/courses', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/user/edit', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/document', HomeController::class . ':view')->add($mw_session_true);
+$app->get('/events', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/video', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/document/{id}', HomeController::class . ':view')->add($mw_session_true);
 $app->get('/video/{id}', HomeController::class . ':view')->add($mw_session_true);

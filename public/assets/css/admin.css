@@ -84,6 +84,7 @@ footer > a {
 
 #nav1 > .container > ul > li:first-child {
   margin-right: 15px;
+  color: white;
 }
 
 #nav1 > .container > ul {
@@ -114,4 +115,9 @@ h4 > .fa-frown-o{
   top: -12px;
   position: relative;
   float: left;
+}
+
+.media-body {
+  padding-top: 30px;
+  padding-left: 20px;
 }

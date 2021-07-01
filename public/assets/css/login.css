@@ -226,3 +226,14 @@ h1{
   color: red;
   font-weight: 600;
 }
+
+.extra-data{
+  margin-bottom: 10px;
+  position: relative;
+  float: left;
+  text-align: center;
+}
+
+img{
+  margin-bottom: 10px;
+}

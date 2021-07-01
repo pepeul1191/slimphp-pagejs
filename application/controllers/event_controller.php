@@ -84,6 +84,30 @@ class EventController extends \Configs\Controller
     }
     return $response->withStatus($status)->write($resp);
   }
+
+  public function recentList($request, $response, $args) {
+    $resp = '';
+    $status = 200;
+    try {
+      $url = $this->constants['admin']['url'] . 'api/event/recent';
+      $headers = array(
+        $this->constants['admin']['key'] => $this->constants['admin']['value'],
+      );
+      $params = array();
+      $response_admin = Request::get($url, $headers, $params);
+      $resp = $response_admin->{'raw_body'};
+    }catch (Exception $e) {
+      $status = 500;
+      $resp = json_encode(
+        [
+          'No se ha podido listar los eventos',
+  				$e->getMessage()
+        ]
+      );
+    }
+    return $response->withStatus($status)->write($resp);
+  }
+
 }
 
 ?>

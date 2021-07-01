@@ -17,7 +17,7 @@ var ModalDocumentView = Backbone.View.extend({
       STATIC_URL: STATIC_URL,
       documents: this.documents,
     };
-    console.log(data)
+    //console.log(data)
 		var templateCompiled = null;
 		$.ajax({
 		  url: STATIC_URL + 'templates/modal_document.html',
