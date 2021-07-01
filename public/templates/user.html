@@ -1,6 +1,105 @@
 <div class="row">
-  <div class="col-12 mt-3">
+  <div class="col-9 mt-3">
     <h4>Mis datos</h4>
-    
+  </div>
+  <div class="col-3 mt-3">
+    <label id="message"></label>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="txtCode">Código</label>
+            <input type="text" class="form-control" id="txtCode" aria-describedby="txtCodeHelp" value="<%= user.get('code') %>" disabled>
+            <small id="txtCodeHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="txtDNI">DNI</label>
+            <input type="text" class="form-control" id="txtDNI" aria-describedby="txtDNIHelp" disabled  placeholder="Ingrese código" value="<%= user.get('dni') %>">
+            <small id="txtDNIHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="txtNames">Nombres</label>
+            <input type="text" class="form-control" id="txtNames" aria-describedby="txtNamesHelp"  disabled placeholder="Ingrese nombres" value="<%= user.get('names') %>">
+            <small id="txtNamesHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="txtLastNames">Apellidos</label>
+            <input type="text" class="form-control" id="txtLastNames" aria-describedby="txtLastNamesHelp"   disabled placeholder="Ingrese apellidos" value="<%= user.get('last_names') %>">
+            <small id="txtLastNamesHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="txtTuition">Colegiatura</label>
+            <input type="text" class="form-control" id="txtTuition" aria-describedby="txtTuitionHelp" disabled value="<%= user.get('tuition') %>">
+            <small id="txtTuitionHelp" class="form-text"></small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="txtEmail">Correo GMail</label>
+            <input type="text" class="form-control" id="txtEmail" aria-describedby="txtEmailHelp"  disabled placeholder="Ingrese email" value="<%= user.get('email') %>">
+            <small id="txtEmailHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="txtPhone">Teléfono</label>
+            <input type="text" class="form-control" id="txtPhone" aria-describedby="txtPhoneHelp"  placeholder="Ingrese teléfono" value="<%= user.get('phone') %>">
+            <small id="txtPhoneHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group" id="districtForm">
+            <label for="txtDistrict">Distrito</label>
+            <input type="text" class="form-control" id="txtDistrict" aria-describedby="txtDistrictHelp"  placeholder="Distrito" value="<%= user.get('district_name') %>">
+            <small id="txtDistrictHelp" class="form-text"></small>
+            <ul id="districtList" class="d-none hint-container"></ul>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="txtAddress">Dirección</label>
+            <input type="text" class="form-control" id="txtAddress" aria-describedby="txtAddressHelp"  placeholder="Ingrese dirección" value="<%= user.get('address') %>">
+            <small id="txtAddressHelp" class="form-text"></small>
+          </div>
+        </div>
+        <div class="col-md-12" style="margin-bottom: 10px;">
+          <label>Especialidades de Interés</label><br>
+          <% for(var i = 0; i < user.get('specialisms').length; i++){ %>
+            <% var check = ""; 
+              if(user.get('specialisms').models[i].get('exist') == 1){
+                check = 'checked';
+              }
+            %>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="spc-<%= user.get('specialisms').models[i].get('id') %>" value="<%= user.get('specialisms').models[i].get('id') %>" <%= check %> >
+              <label class="form-check-label" for="spc-<%= user.get('specialisms').models[i].get('id') %>">
+                <%= user.get('specialisms').models[i].get('name') %>
+              </label>
+            </div>
+          <% } %>
+        </div>
+        <div class="col-md-12" style="margin-bottom: 20px;">
+          <div class="form-group">
+            <button id="btnSave"  class="btn btn-success pull-right" style="margin-top: -15px; margin-left: 20px;" >
+              <i class="fa fa-check" style="margin-right:5px"></i>
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

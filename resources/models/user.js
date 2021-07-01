@@ -1,3 +1,5 @@
+import SpealismCollection from '../collections/speaker_collection';
+
 var User = Backbone.Model.extend({
   initialize : function() {
     this.id = null;
@@ -11,6 +13,7 @@ var User = Backbone.Model.extend({
     this.picture_url = null;
     this.address = null;
     this.district_id = null;
+    this.specialisms = new SpealismCollection();
   }
 });
 

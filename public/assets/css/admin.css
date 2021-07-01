@@ -121,3 +121,7 @@ h4 > .fa-frown-o{
   padding-top: 30px;
   padding-left: 20px;
 }
+
+.form-check-inline{
+  margin-bottom: 10px;
+}

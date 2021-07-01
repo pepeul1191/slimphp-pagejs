@@ -1,18 +1,124 @@
 import UserService from '../services/user_service';
 import User from '../models/user';
+import SpealismCollection from '../collections/speaker_collection';
+import Specialism from '../models/specialism';
+import Autocomplete from '../libs/autocomplete';
+import District from '../models/district';
+import DistrictCollection from '../collections/district_collection';
+import ValidationForm from '../libs/validation_form';
 
-var EventView = Backbone.View.extend({
+var UserView = Backbone.View.extend({
   el: '#workspace',
 	initialize: function(){
+    this.user = new User();
+    this.districtAutocomplete = null;
+    this.form = null;
 	},
 	events: {
+    'click #btnSave': 'save',
   },
   loadComponents: function(){
-
+    // clear user
+    this.user = new User();
+    // get data
+    var resp = UserService.get();
+    if(resp.status == 200){
+      this.user.set('id', resp.message.id);
+      this.user.set('dni', resp.message.dni);
+      //this.user.set('code', resp.message.code);
+      //this.user.set('tuition', resp.message.tuition);
+      this.user.set('names', resp.message.names);
+      this.user.set('last_names', resp.message.last_names);
+      this.user.set('email', resp.message.email);
+      this.user.set('phone', resp.message.phone);
+      this.user.set('district_id', resp.message.district_id);
+      this.user.set('picture_url', resp.message.picture_url);
+      this.user.set('address', resp.message.address);
+      this.user.set('district_name', resp.message.district_name);
+      // specialisms
+      var specialisms = new SpealismCollection();
+      resp.message.specialisms.forEach(specialism => {
+        var s = new Specialism({
+          id: specialism.id,
+          name: specialism.name,
+          exist: parseInt(specialism.exist),
+        });
+        specialisms.add(s);
+      });
+      this.user.set('specialisms', specialisms);
+    }
+    // form
+    this.form = new ValidationForm({
+      el: '#form',
+      entries: [
+        // txtDistrict
+        {
+          id: 'txtDistrict',
+          help: 'txtDistrictHelp',
+          validations: [
+            {
+              type: 'notEmpty',
+              message: 'Debe de ingresar un distrito',
+            }, 
+          ],
+        },
+        // txtAddress
+        {
+          id: 'txtAddress',
+          help: 'txtAddressHelp',
+          validations: [
+            {
+              type: 'notEmpty',
+              message: 'Debe de ingresar una dirección',
+            }, 
+          ],
+        },
+        // txtPhone
+        {
+          id: 'txtPhone',
+          help: 'txtPhoneHelp',
+          validations: [
+            {
+              type: 'notEmpty',
+              message: 'Debe de ingresar su teléfono',
+            }, 
+          ],
+        },
+      ],
+      classes: {
+        textDanger: 'text-danger',
+        inputInvalid: 'is-invalid',
+        textSuccess: 'text-success',
+      },
+      messageForm: 'message',
+    });
+    // district autocomplete
+    this.districtAutocomplete = new Autocomplete({
+      el: '#districtForm',
+      inputText: 'txtDistrict',
+      inputHelp: 'txtDistrictHelp',
+      hintList: 'districtList',
+      service: {
+        url: BASE_URL + 'admin/district/search',
+        param: 'name',
+      },
+      model: District,
+      collection: new DistrictCollection(),
+      formatResponseData: {
+        id: 'id',
+        name: 'name',
+      },
+      formatModelData: {
+        id: 'id',
+        name: 'name',
+      },
+    });
+    this.districtAutocomplete.id = this.user.get('id');
   },
   render: function(){
     var data = {
       STATIC_URL: STATIC_URL,
+      user: this.user, 
     };
     var templateCompiled = null;
 		$.ajax({
@@ -31,6 +137,9 @@ var EventView = Backbone.View.extend({
 		});
     this.$el.html(templateCompiled);
   },
+  save: function(){
+
+  },
 });
 
-export default EventView;
+export default UserView;

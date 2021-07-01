@@ -14,7 +14,7 @@ page.base('/');
 page('', courses);
 page('courses', courses);
 page('events', events);
-page('user/edit', user);
+page('user', user);
 page('video/:event_id', videoModal);
 page('document/:event_id', documentModal);
 page('*', notfound)
