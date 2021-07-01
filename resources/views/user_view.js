@@ -18,35 +18,6 @@ var UserView = Backbone.View.extend({
     'click #btnSave': 'save',
   },
   loadComponents: function(){
-    // clear user
-    this.user = new User();
-    // get data
-    var resp = UserService.get();
-    if(resp.status == 200){
-      this.user.set('id', resp.message.id);
-      this.user.set('dni', resp.message.dni);
-      //this.user.set('code', resp.message.code);
-      //this.user.set('tuition', resp.message.tuition);
-      this.user.set('names', resp.message.names);
-      this.user.set('last_names', resp.message.last_names);
-      this.user.set('email', resp.message.email);
-      this.user.set('phone', resp.message.phone);
-      this.user.set('district_id', resp.message.district_id);
-      this.user.set('picture_url', resp.message.picture_url);
-      this.user.set('address', resp.message.address);
-      this.user.set('district_name', resp.message.district_name);
-      // specialisms
-      var specialisms = new SpealismCollection();
-      resp.message.specialisms.forEach(specialism => {
-        var s = new Specialism({
-          id: specialism.id,
-          name: specialism.name,
-          exist: parseInt(specialism.exist),
-        });
-        specialisms.add(s);
-      });
-      this.user.set('specialisms', specialisms);
-    }
     // form
     this.form = new ValidationForm({
       el: '#form',
@@ -99,7 +70,7 @@ var UserView = Backbone.View.extend({
       inputHelp: 'txtDistrictHelp',
       hintList: 'districtList',
       service: {
-        url: BASE_URL + 'admin/district/search',
+        url: BASE_URL + 'district/search',
         param: 'name',
       },
       model: District,
@@ -116,6 +87,35 @@ var UserView = Backbone.View.extend({
     this.districtAutocomplete.id = this.user.get('id');
   },
   render: function(){
+    // clear user
+    this.user = new User();
+    // get data
+    var resp = UserService.get();
+    if(resp.status == 200){
+      this.user.set('id', resp.message.id);
+      this.user.set('dni', resp.message.dni);
+      //this.user.set('code', resp.message.code);
+      //this.user.set('tuition', resp.message.tuition);
+      this.user.set('names', resp.message.names);
+      this.user.set('last_names', resp.message.last_names);
+      this.user.set('email', resp.message.email);
+      this.user.set('phone', resp.message.phone);
+      this.user.set('district_id', resp.message.district_id);
+      this.user.set('picture_url', resp.message.picture_url);
+      this.user.set('address', resp.message.address);
+      this.user.set('district_name', resp.message.district_name);
+      // specialisms
+      var specialisms = new SpealismCollection();
+      resp.message.specialisms.forEach(specialism => {
+        var s = new Specialism({
+          id: specialism.id,
+          name: specialism.name,
+          exist: parseInt(specialism.exist),
+        });
+        specialisms.add(s);
+      });
+      this.user.set('specialisms', specialisms);
+    }
     var data = {
       STATIC_URL: STATIC_URL,
       user: this.user, 
@@ -138,7 +138,37 @@ var UserView = Backbone.View.extend({
     this.$el.html(templateCompiled);
   },
   save: function(){
+    this.form.check();
+    if(this.form.isOk == true){
+      var phone = $('#txtPhone').val();
+      var district_id = this.districtAutocomplete.id;
+      var address = $('#txtAddress').val();
+      var specialisms = [];
+      $("input:checkbox[name=specialisms-checkbox]").each(function(){
+        specialisms.push({
+          specialism_id: $(this).attr('specialism-id'),
+          exist: $(this).is(':checked'),
+        });
+      });
+      var respData = UserService.update(phone, district_id, address, specialisms);
+      if(respData.status == 200){
+        if(respData.message == ''){
+          // is a edited
+          $('#message').removeClass('alert-danger');
+          $('#message').removeClass('alert-warning');
+          $('#message').addClass('alert-success');
+          $('#message').html('Datos actualizados');
+        }else{
+          // error
+          $('#message').removeClass('alert-success');
+          $('#message').removeClass('alert-warning');
+          $('#message').addClass('alert-danger');
+          $('#message').html('Ocurrió un error en actualizar sus datos');
+        }
+      }else{
 
+      }
+    }
   },
 });
 

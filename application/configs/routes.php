@@ -9,6 +9,7 @@ use Controller\UserController;
 use Controller\OAuthController;
 use Controller\EventController;
 use Controller\DocumentController;
+use Controller\DistrictController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -35,6 +36,8 @@ $app->get('/event/document', EventController::class . ':studentDocuments');
 $app->get('/event/video', EventController::class . ':studentVideos');
 $app->get('/document/get', DocumentController::class . ':get')->add($mw_session_true);
 $app->get('/user/get', UserController::class . ':get')->add($mw_session_true);
+$app->post('/user/update', UserController::class . ':update')->add($mw_session_true);
+$app->get('/district/search', DistrictController::class . ':search')->add($mw_session_true);
 //error
 $app->get('/error/access/{numero}', ErrorController::class . ':access');
 //home

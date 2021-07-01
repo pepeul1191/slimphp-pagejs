@@ -3,7 +3,7 @@
     <h4>Mis datos</h4>
   </div>
   <div class="col-3 mt-3">
-    <label id="message"></label>
+    <div class="alert" id="message" role="alert"></div>
   </div>
 </div>
 <div class="row">
@@ -84,7 +84,7 @@
               }
             %>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="spc-<%= user.get('specialisms').models[i].get('id') %>" value="<%= user.get('specialisms').models[i].get('id') %>" <%= check %> >
+              <input name="specialisms-checkbox" class="form-check-input" type="checkbox" id="spc-<%= user.get('specialisms').models[i].get('id') %>" specialism-id="<%= user.get('specialisms').models[i].get('id') %>" value="<%= user.get('specialisms').models[i].get('id') %>" <%= check %> >
               <label class="form-check-label" for="spc-<%= user.get('specialisms').models[i].get('id') %>">
                 <%= user.get('specialisms').models[i].get('name') %>
               </label>

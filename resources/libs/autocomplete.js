@@ -36,7 +36,6 @@ var Autocomplete = Backbone.View.extend({
     this.events['keyup #' + this.inputText] = 'search';
     this.events['focusout #' + this.inputText] = 'focusOut';
     this.delegateEvents();
-    console.log(this.events)
   },
   // events
   events: {
@@ -44,7 +43,6 @@ var Autocomplete = Backbone.View.extend({
   },
   // methods
   search: function(event) {
-    alert();
     var text = $(event.target).val();
     if(event.keyCode != 27){ // 27 == Escape
       var _this = this;

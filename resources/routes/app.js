@@ -42,8 +42,8 @@ function user(ctx, next){
   if(userView == null){
     userView = new UserView();
   }
-  userView.loadComponents();
   userView.render();
+  userView.loadComponents();
 }
 
 function documentModal(ctx, next){
