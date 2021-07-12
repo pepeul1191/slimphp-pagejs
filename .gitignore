@@ -9,3 +9,5 @@ public/dist
 .DS_Store
 *.ods#
 .env
+*.webm
+*.mp4

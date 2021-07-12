@@ -3,6 +3,7 @@ import EventView from '../views/event_view';
 import ModalDocumentView from '../views/modal_document_view';
 import ModalVideoView from '../views/modal_video_view';
 import UserView from '../views/user_view';
+import hideMenu from '../helpers/hide_menu';
 
 // views
 var eventView = null;
@@ -21,29 +22,38 @@ page('*', notfound)
 page();
 
 function courses(ctx, next) {
+  var isExpanded = true;
   if(eventView == null){
     eventView = new EventView();
+    isExpanded = false;
   }
   eventView.loadComponents();
   eventView.render('event');
+  hideMenu(isExpanded);
   //next();
 }
 
 function events(ctx, next) {
+  var isExpanded = true;
   if(eventView == null){
     eventView = new EventView();
+    isExpanded = false;
   }
   eventView.loadComponentsRecent();
   eventView.render('recent');
+  hideMenu(isExpanded);
   //next();
 }
 
 function user(ctx, next){
+  var isExpanded = true;
   if(userView == null){
     userView = new UserView();
+    isExpanded = false;
   }
   userView.render();
   userView.loadComponents();
+  hideMenu(isExpanded);
 }
 
 function documentModal(ctx, next){

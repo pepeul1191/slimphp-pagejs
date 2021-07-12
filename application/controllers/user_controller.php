@@ -83,7 +83,7 @@ class UserController extends \Configs\Controller
       $resp = $response_admin->raw_body;
       $status = 200;
     }else{
-      var_dump($response_admin->raw_body);
+      //var_dump($response_admin->raw_body);
       $resp = 'ups, ocurrió un error en actualizar sus datos';
     }
     return $response->withStatus($status)->write($resp);

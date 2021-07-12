@@ -3,7 +3,7 @@
     <h4>Lista de Cursos Matriculados</h4>
   </div>
 </div>
-<div class="row">
+<div class="row d-none d-md-block d-lg-block" id="display-pc">
   <% events.each(function(event) { %>
   <div class="col-12 mt-3">
     <div class="card">
@@ -23,6 +23,28 @@
           <div class="form-group">
             <a class="btn btn-secondary pull-left" style="margin-top: 12px; margin-left: 20px;" href="/document/<%= event.get('id') %>"> <i class="fa fa-book" style="margin-right:5px"></i>Materiales del Curso</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
+<div class="row d-block d-sm-none" id="display-mobile">
+  <% events.each(function(event) { %>
+  <div class="col-md-4 col-sd-12">
+    <div class="card" style="">
+      <img class="card-img-top" src="<%= REMOTE_URL + event.get('url') %>" alt="<%= event.get('name') %>">
+      <div class="card-body">
+        <h4 class="card-title"><%= event.get('name') %></h4>
+        <p class="card-text"><%= event.get('description') %></p>
+        <div class="form-group">
+          <a class="btn btn-info pull-left" style="margin-top: 12px;" href="/video/<%= event.get('id') %>">
+            <i class="fa fa-video-camera" style="margin-right:5px"></i>
+            Videos del Curso
+          </a>
+        </div>
+        <div class="form-group">
+          <a class="btn btn-secondary pull-left" style="margin-top: 12px; margin-left: 20px;" href="/document/<%= event.get('id') %>"> <i class="fa fa-book" style="margin-right:5px"></i>Materiales del Curso</a>
         </div>
       </div>
     </div>
