@@ -10,7 +10,7 @@ class Controller
   protected $container;
 
   public function __construct(\Slim\Container $container) {
-    $dotenv = Dotenv::createImmutable(__DIR__. '/../..');
+    $dotenv = Dotenv::createImmutable(__DIR__);
     $this->env = $dotenv->load();
     $this->container = $container;
     $this->constants = $container->constants[$_ENV['ENV']];

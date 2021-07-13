@@ -23,6 +23,34 @@ return [
         'env_static' => 'desarrollo',
         'validation_csrf' => 'disable',
         'validation_session' => 'able',
+        'check_https' => 'able',
+        'login' => [
+          'user' => 'admin',
+          'password' => 'sistema123'
+        ],
+        'admin' => [
+          'url' => 'http://localhost:8080/',
+          'static_url' => 'http://localhost:8080/public/',
+          'key' => 'api-key',
+          'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
+        ],
+        'web' => [
+          'url' => 'http://legisjuristas.com/',
+        ],
+        'csrf' => [
+          'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
+          'key' => 'csrf_val'
+        ],
+      ],
+      'prod' => [
+        'base_url' => 'https://aula.legijuristas.com/',
+        'static_url' => 'https://aula.legijuristas.com/public/',
+        'redirect_url' => [
+          'google' => 'http://localhost:8090/oauth/callback?origin=google',
+        ],
+        'env_static' => 'desarrollo',
+        'validation_csrf' => 'disable',
+        'validation_session' => 'able',
         'login' => [
           'user' => 'admin',
           'password' => 'sistema123'

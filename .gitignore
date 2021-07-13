@@ -11,3 +11,4 @@ public/dist
 .env
 *.webm
 *.mp4
+*.zip
