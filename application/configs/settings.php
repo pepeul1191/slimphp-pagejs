@@ -43,10 +43,10 @@ return [
         ],
       ],
       'prod' => [
-        'base_url' => 'https://aula.legijuristas.com/',
-        'static_url' => 'https://aula.legijuristas.com/public/',
+        'base_url' => 'https://aula.legisjuristas.com/',
+        'static_url' => 'https://aula.legisjuristas.com/public/',
         'redirect_url' => [
-          'google' => 'http://localhost:8090/oauth/callback?origin=google',
+          'google' => 'https://aula.legisjuristas.com/oauth/callback?origin=google',
         ],
         'env_static' => 'desarrollo',
         'validation_csrf' => 'disable',
@@ -56,8 +56,8 @@ return [
           'password' => 'sistema123'
         ],
         'admin' => [
-          'url' => 'http://localhost:8080/',
-          'static_url' => 'http://localhost:8080/public/',
+          'url' => 'https://aula.legisjuristas.com/',
+          'static_url' => 'https://aula.legisjuristas.com/public/',
           'key' => 'api-key',
           'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
         ],
