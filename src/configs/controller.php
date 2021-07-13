@@ -3,15 +3,17 @@
 namespace Configs;
 
 use Symfony\Component\Yaml\Yaml;
-
+use Dotenv\Dotenv;
 
 class Controller
 {
   protected $container;
 
   public function __construct(\Slim\Container $container) {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $this->env = $dotenv->load();
     $this->container = $container;
-    $this->constants = $container->constants;
+    $this->constants = $container->constants[$_ENV['ENV']];
   }
 
   public function load_helper($helper){

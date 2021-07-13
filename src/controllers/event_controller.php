@@ -8,8 +8,12 @@ class EventController extends \Configs\Controller
     $rpta = '';
     $status = 200;
     try {
-      $url = $this->constants['service_url'] . 'admin/event/recent-list';
-      $rs = \Unirest\Request::get($url);
+      $url = $this->constants['service_url'] . 'api/event/recent-list';
+      $headers = array(
+        $this->constants['admin']['key'] => $this->constants['admin']['value'],
+      );
+      $params = array();
+      $rs = \Unirest\Request::get($url, $headers, $params);
       $rpta = $rs->{'raw_body'};
     }catch (Exception $e) {
       $status = 500;
@@ -37,13 +41,18 @@ class EventController extends \Configs\Controller
       }else{
         $date = 'init_date>CURDATE()';
       }
-      $url = $this->constants['service_url'] . 'admin/event/search?' .
-          'specialism_id=' . $specialism_id . '&' .
-          'page=' . $page . '&' .
-          'step=' . $step . '&' .
-          'query_date=' . $date . '&' .
-          'event_type_id=' . $event_type_id;
-      $rs = \Unirest\Request::get($url);
+      $url = $this->constants['service_url'] . 'api/event/search';
+      $headers = array(
+        $this->constants['admin']['key'] => $this->constants['admin']['value'],
+      );
+      $params = array(
+        'specialism_id' => $specialism_id,
+        'page' => $page,
+        'step' => $step,
+        'query_date' => $date,
+        'event_type_id' => $event_type_id,
+      );
+      $rs = \Unirest\Request::get($url, $headers, $params);
       $rpta = $rs->{'raw_body'};
     }catch (Exception $e) {
       $status = 500;

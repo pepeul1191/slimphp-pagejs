@@ -14,20 +14,50 @@ return [
       'level' => \Monolog\Logger::DEBUG,
     ],
     'constants' => [
-      'base_url' => 'http://legisjuristas.com/',
-      'static_url' => 'http://legisjuristas.com/public/',
-      'env_static' => 'desarrollo',
-      'remote_url' => 'http://admin.legisjuristas.com/public/',
-      'service_url' => 'http://admin.legisjuristas.com/',
-      'validation_csrf' => 'disable',
-      'validation_session' => 'able',
-      'login' => [
-        'user' => 'admin',
-        'password' => 'sistema123'
+      'local' => [
+        'base_url' => 'http://localhost:3000/',
+        'static_url' => 'http://localhost:3000/public/',
+        'env_static' => 'desarrollo',
+        'service_url' => 'http://localhost:8080/',
+        'validation_csrf' => 'disable',
+        'validation_session' => 'able',
+        'login' => [
+          'user' => 'admin',
+          'password' => 'sistema123'
+        ],
+        'admin' => [
+          'url' => 'http://localhost:8080/',
+          'static_url' => 'http://localhost:8080/public/',
+          'key' => 'api-key',
+          'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
+        ],
+        'csrf' => [
+          'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
+          'key' => 'csrf_val'
+        ],
       ],
-      'csrf' => [
-        'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
-        'key' => 'csrf_val'
+      'prod' => [
+        'base_url' => 'http://legisjuristas.com/',
+        'static_url' => 'http://legisjuristas.com/public/',
+        'env_static' => 'desarrollo',
+        'remote_url' => 'http://admin.legisjuristas.com/public/',
+        'service_url' => 'http://admin.legisjuristas.com/',
+        'validation_csrf' => 'disable',
+        'validation_session' => 'able',
+        'login' => [
+          'user' => 'admin',
+          'password' => 'sistema123'
+        ],
+        'admin' => [
+          'url' => 'http://localhost:8080/',
+          'static_url' => 'http://localhost:8080/public/',
+          'key' => 'api-key',
+          'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
+        ],
+        'csrf' => [
+          'secret' => 'PKBcauXg6sTXz7Ddlty0nejVgoUodXL89KNxcrfwkEme0Huqtj6jjt4fP7v2uF4L',
+          'key' => 'csrf_val'
+        ],
       ],
     ],
   ],

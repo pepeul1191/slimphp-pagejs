@@ -9,3 +9,5 @@ public/dist
 .DS_Store
 *.ods#
 .env
+public/assets/img/speakers/*
+public/assets/img/events/*
