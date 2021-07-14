@@ -25,6 +25,12 @@ Google no acepta colocar dominio autorizado a localhost. Como solución para el 
 
 Callback URL: http://localhost:8080/user/signin/callback.php?origin=google
 
+## Git
+
+    $ git push origin master:class
+    $ git clone -b class https://github.com/pepeul1191/slimphp-pagejs.git .
+
+
 ---
 
 Fuentes:
