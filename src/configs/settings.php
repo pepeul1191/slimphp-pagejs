@@ -15,8 +15,8 @@ return [
     ],
     'constants' => [
       'local' => [
-        'base_url' => 'http://localhost:3000/',
-        'static_url' => 'http://localhost:3000/public/',
+        'base_url' => 'http://192.168.1.26:8090/',
+        'static_url' => 'http://192.168.1.26:8090/public/',
         'env_static' => 'desarrollo',
         'service_url' => 'http://localhost:8080/',
         'validation_csrf' => 'disable',

@@ -33,7 +33,7 @@ $container['notFoundHandler'] = function ($c) {
     /**/
     $method = $request->getMethod();
     if($method == 'GET'){
-      return $response->withRedirect($c->get('settings')['constants']['base_url'] . 'error/access/404');
+      return $response->withRedirect('/error/access/404');
     }else{
       $rpta = json_encode(
         [

@@ -21,6 +21,18 @@ Cambiar en 'src/configs/settings.php' el valor de llave 'ambiente_csrf' y 'ambie
     MAIL_RESPONSE="demo@correo.pe"
     MAIL_HOST="mail.correo.pe"
 
+## Archivo .env en config
+
+    ENV="prod"||"local"
+
+## Servidor de desarrollo local
+
+    $ php -S localhost:8090
+
+### Github
+
+    $ git push origin web:web
+
 ### Dump y Restore Mysql
 
 Dump

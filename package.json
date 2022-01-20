@@ -1,0 +1,12 @@
+{
+  "name": "pdf-generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "bower:install": "./node_modules/.bin/bower install"
+  },
+  "devDependencies": {
+    "bower": "^1.8.12"
+  },
+  "dependencies": {}
+}
