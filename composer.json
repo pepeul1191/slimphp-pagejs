@@ -47,7 +47,8 @@
     },
     "scripts": {
         "start": "php -S localhost:8080",
-        "test": "phpunit"
+        "test": "phpunit",
+        "dump": "composer dump-autoload -o"
     }
 
 }

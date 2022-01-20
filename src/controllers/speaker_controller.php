@@ -9,7 +9,7 @@ class SpeakerController extends \Configs\Controller
     $status = 200;
     try {
       $number = $request->getQueryParam('number');
-      $url = $this->constants['service_url'] . 'api/speaker/random-list';
+      $url = $this->constants['service_url'] . 'api/pdf/generate';
       $headers = array(
         $this->constants['admin']['key'] => $this->constants['admin']['value'],
       );

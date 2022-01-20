@@ -8,6 +8,7 @@ use Controller\SpeakerController;
 use Controller\EventController;
 use Controller\EmailController;
 use Controller\SpecialismController;
+use Controller\StudentController;
 
 // Routes
 $app->get('/demo/[{name}]', function (Request $request, Response $response, array $args) {
@@ -28,5 +29,6 @@ $app->get('/speaker/random-list', SpeakerController::class . ':randomList');
 $app->get('/event/recent-list', EventController::class . ':recentList');
 $app->get('/event/search', EventController::class . ':search');
 $app->get('/specialism/list', SpecialismController::class . ':list');
+$app->get('/student/check', StudentController::class . ':check');
 $app->post('/email/send', EmailController::class . ':send');
 //servicios REST
