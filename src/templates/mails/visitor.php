@@ -411,7 +411,7 @@ return <<<EOD
 				<h3 class="heading">Enlaces</h3>
 				<ul>
 					<li><a href="%base_url">Home</a></li>
-					<li><a href="%base_urlnosotros">Nostros</a></li>
+					<li><a href="%base_urlnosotros">Nosotros</a></li>
 					<li><a href="%base_urlcapacitaciones">Capacitaciones</a></li>
 					<li><a href="%base_urlponentes">Ponentes</a></li>
 				</ul>

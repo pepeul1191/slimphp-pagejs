@@ -11,3 +11,6 @@ public/dist
 .env
 public/assets/img/speakers/*
 public/assets/img/events/*
+*.zip
+.htaccess.*
+error_log

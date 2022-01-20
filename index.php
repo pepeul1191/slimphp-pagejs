@@ -4,8 +4,8 @@ if (isset($_SERVER['HTTPS']) &&
   ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
   isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
   $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-  // $protocol = 'https://'; // cambiar cuando haya SSL
-  $protocol = 'http://';
+  $protocol = 'https://'; // cambiar cuando haya SSL
+  //$protocol = 'http://';
 }
 else {
   $protocol = 'http://';
@@ -21,8 +21,11 @@ if($protocol == 'http://'){
       $escaped_url = implode(".", $url);
       $www_removed = true;
   }
+  //echo $www_removed;  echo $escaped_url;  exit();
   if($www_removed){
-      header( "Location: http://" . $escaped_url );
+      header( "Location: https://" . $escaped_url );
+  }else{
+      header( "Location: https://" . $url );
   }
 }else{
   $url =  "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";

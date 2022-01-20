@@ -37,11 +37,11 @@ return [
         ],
       ],
       'prod' => [
-        'base_url' => 'http://legisjuristas.com/',
-        'static_url' => 'http://legisjuristas.com/public/',
+        'base_url' => 'https://legisjuristas.com/',
+        'static_url' => 'https://legisjuristas.com/public/',
         'env_static' => 'desarrollo',
-        'remote_url' => 'http://admin.legisjuristas.com/public/',
-        'service_url' => 'http://admin.legisjuristas.com/',
+        'remote_url' => 'https://admin.legisjuristas.com/public/',
+        'service_url' => 'https://admin.legisjuristas.com/',
         'validation_csrf' => 'disable',
         'validation_session' => 'able',
         'login' => [
@@ -49,8 +49,8 @@ return [
           'password' => 'sistema123'
         ],
         'admin' => [
-          'url' => 'http://localhost:8080/',
-          'static_url' => 'http://localhost:8080/public/',
+          'url' => 'https://admin.legisjuristas.com/',
+          'static_url' => 'https://admin.legisjuristas.com/public/',
           'key' => 'api-key',
           'value' => 'SJdTvhpVBTm9f6SwjUAs48ffnlmhZU',
         ],
